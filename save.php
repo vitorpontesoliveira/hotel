@@ -1,0 +1,89 @@
+<?php
+switch ($_REQUEST['acao']) {
+    case 'cadastrarClient':
+        $nome = $_POST['nome'];
+        $telefone = $_POST['telefone'];
+        $email = $_POST['email'];
+
+        $sql = "INSERT INTO clientes
+         (nome, telefone, email)
+         VALUES('$nome', '$telefone', '$email')";
+
+        $res = mysqli_query($conn, $sql);
+
+        if ($res === true) {
+            echo "<script>alert('Você foi cadastrado com sucesso!');</script>";
+            echo "<script>location.href='?page=list_clients';</script>";
+        } else {
+            echo "Erro ao cadastrar: " . mysqli_error($conn);
+        }
+        break;
+
+    case 'cadastrarRoom':
+        $numero = $_POST['number'];
+        $condicaoQuarto = $_POST['condicaoQuarto'];
+        $ocupado = ($condicaoQuarto == 'Sim') ? 1 : 0;
+        $valor = $_POST['val'];
+
+        $sql = "INSERT INTO quartos
+                    (numero, ocupado, valor)
+                    VALUES('$numero', '$ocupado', '$valor')";
+
+        $res = mysqli_query($conn, $sql);
+
+        if ($res === true) {
+            echo "<script>alert('Quarto cadastrado com sucesso!');</script>";
+            echo "<script>location.href='?page=list_rooms';</script>";
+        } else {
+            echo "Erro ao cadastrar: " . mysqli_error($conn);
+        }
+        break;
+
+    case 'editRooms';
+        $numero = $_POST['number'];
+        $condicaoQuarto = $_POST['condicaoQuarto'];
+        $ocupado = ($condicaoQuarto == 'Sim') ? 1 : 0;
+        $valor = $_POST['val'];
+
+
+        $sql = "UPDATE quartos SET
+                    numero = '$numero',
+                    ocupado = '$ocupado',
+                    valor = '$valor'
+                WHERE
+                    quarto_id = " . $_REQUEST["quarto_id"];
+
+        $res = mysqli_query($conn, $sql);
+
+        if ($res === true) {
+            echo "<script>alert('Quarto editado com sucesso!');</script>";
+            echo "<script>location.href='?page=list_rooms';</script>";
+        } else {
+            echo "Erro ao editar: " . mysqli_error($conn);
+        }
+
+        break;
+
+        case 'editRooms';
+        $nome = $_POST['nome'];
+        $telefone = $_POST['telefone'];
+        $email = $_POST['email'];
+
+        $sql = "UPDATE clientes SET
+                    nome = '$nome',
+                    telefone = '$telefone',
+                    email = '$email'
+                WHERE
+                    cliente_id = " . $_REQUEST["cliente_id"];
+
+        $res = mysqli_query($conn, $sql);
+
+        if ($res === true) {
+            echo "<script>alert('Cliente editado com sucesso!');</script>";
+            echo "<script>location.href='?page=list_clients';</script>";
+        } else {
+            echo "Erro ao editar: " . mysqli_error($conn);
+        }
+
+        break;
+}
