@@ -39,10 +39,33 @@ switch ($_REQUEST['acao']) {
         }
         break;
 
+    case 'newReserva':
+        $sql = "INSERT INTO locacoes(
+            numero,
+            nome,
+            data
+            ) VALUES(
+                ".$_POST['numero'].",
+                '".$_POST['nome']."',
+                ".$_POST['data']."
+            )
+    )";
+
+    $res = $conn->query($sql);
+
+
+        if ($res === true) {
+            echo "<script>alert('Você foi cadastrado com sucesso!');</script>";
+            echo "<script>location.href='?page=list_clients';</script>";
+        } else {
+            echo "Erro ao cadastrar: " . mysqli_error($conn);
+        }
+        break;
+
+
     case 'editRooms';
         $numero = $_POST['number'];
-        $condicaoQuarto = $_POST['condicaoQuarto'];
-        $ocupado = ($condicaoQuarto == 'Sim') ? 1 : 0;
+        $ocupado = $_POST['ocupado'];
         $valor = $_POST['val'];
 
 
@@ -51,7 +74,7 @@ switch ($_REQUEST['acao']) {
                     ocupado = '$ocupado',
                     valor = '$valor'
                 WHERE
-                    quarto_id = " . $_REQUEST["quarto_id"];
+                   quarto_id = " . $_REQUEST["id"];
 
         $res = mysqli_query($conn, $sql);
 
@@ -64,7 +87,7 @@ switch ($_REQUEST['acao']) {
 
         break;
 
-        case 'editRooms';
+    case 'editClients';
         $nome = $_POST['nome'];
         $telefone = $_POST['telefone'];
         $email = $_POST['email'];
@@ -74,16 +97,45 @@ switch ($_REQUEST['acao']) {
                     telefone = '$telefone',
                     email = '$email'
                 WHERE
-                    cliente_id = " . $_REQUEST["cliente_id"];
+                    cliente_id = " . $_REQUEST["id"];
 
         $res = mysqli_query($conn, $sql);
 
         if ($res === true) {
-            echo "<script>alert('Cliente editado com sucesso!');</script>";
+            echo "<script>alert(Quarto foi editado com sucesso!');</script>";
             echo "<script>location.href='?page=list_clients';</script>";
         } else {
             echo "Erro ao editar: " . mysqli_error($conn);
         }
 
+        break;
+
+    case 'excluirCliente';
+        $sql = "DELETE FROM clientes 
+        WHERE cliente_id=" . $_REQUEST["id"];
+
+        $res = mysqli_query($conn, $sql);
+
+        if ($res === true) {
+            echo "<script>alert('Excluido com sucesso!');</script>";
+            echo "<script>location.href='?page=list_clients';</script>";
+        } else {
+            echo "Erro ao excluir: " . mysqli_error($conn);
+        }
+
+        break;
+
+    case 'excluirQuarto';
+        $sql = "DELETE FROM quartos 
+        WHERE quarto_id=" . $_REQUEST["quarto_id"];
+
+        $res = mysqli_query($conn, $sql);
+
+        if ($res === true) {
+            echo "<script>alert('Excluido com sucesso!');</script>";
+            echo "<script>location.href='?page=list_rooms';</script>";
+        } else {
+            echo "Erro ao excluir: " . mysqli_error($conn);
+        }
         break;
 }

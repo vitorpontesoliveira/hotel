@@ -16,17 +16,20 @@
                     <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Cadastrar</a>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Quartos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="?page=newClient">Clientes</a></li>
-                        <li><a class="dropdown-item" href="?page=newRoom">Quartos</a></li>
+                        <li><a class="dropdown-item" href="?page=newRoom">Cadastrar</a></li>
+                        <li><a class="dropdown-item" href="?page=newReserva">Reservar</a></li>
+                        <li><a class="dropdown-item" href="?page=list_rooms">Listar quartos</a></li>
+                        <li><a class="dropdown-item" href="?page=list_reservas">Listar reservas</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Listar</a>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Clientes</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="?page=list_clients">Clientes</a></li>
-                        <li><a class="dropdown-item" href="?page=list_rooms">Quartos</a></li>
+                        <li><a class="dropdown-item" href="?page=newClient">Cadastrar</a></li>
+                        <li><a class="dropdown-item" href="?page=list_clients">Listar</a></li>
+
                     </ul>
                 </li>
         </div>
@@ -54,8 +57,11 @@
             include('editRooms.php');
             break;
         case 'editClients';
-        include('editClients.php');
-        break;
+            include('editClients.php');
+            break;
+        case 'newReserva';
+            include('newLocacao.php');
+            break;
     }
     ?>
 

@@ -5,18 +5,12 @@
             <input type="hidden" name="acao" value="cadastrarRoom">
             <div class="mb-3">
                 <label for="nomeQuarto" class="form-label">Numero do quarto:</label>
-                <input type="number" class="form-control" name="number" id="number" placeholder="Número do quarto" step="1" required>
+                <input type="number" class="form-control" name="number" id="number" placeholder="0" min="1" step="1" required>
             </div>
             <div class="form-group">
-                <label for="condicaoQuarto">O quarto está disponível?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="condicaoQuarto" id="disponivel" value="Sim">
-                    <label class="form-check-label" for="Sim">Sim</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="condicaoQuarto" id="ocupado" value="Não">
-                    <label class="form-check-label" for="Não">Não</label>
-                </div>
+                <label for="condicaoQuarto">O quarto está disponível?</label><br>
+                <input type="radio" name="ocupado" value="Sim" required> Sim<br>
+                <input type="radio" name="ocupado" value="Não" required> Não
             </div>
             <div class="col-mb-3">
                 <label for="validationCustomUsername" class="form-label">Valor:</label>
@@ -27,6 +21,7 @@
             </div>
             <div class="text-center mt-3">
                 <input type="submit" value="Cadastrar" class="btn btn-primary">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back();">Cancelar</button>
             </div>
         </form>
     </div>

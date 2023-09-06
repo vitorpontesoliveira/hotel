@@ -1,43 +1,34 @@
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title text-center">Lista de Quartos</h2>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Número</th>
-                                <th>Ocupado</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $sql = "SELECT * FROM quartos";
+    <h2>Lista de Quartos</h2>
 
-                            $res = $conn->query($sql);
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Ocupado</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $sql = "SELECT * FROM quartos";
 
-                            $qtd = $res->num_rows;
+            $res = $conn->query($sql);
 
-                            if($qtd >0) {
-                                while($row = $res->fetch_object()){
-                                    echo "<tr>";
-                                    echo "<td>$row->quarto_id</td>";
-                                    echo "<td>$row->numero</td>";
-                                    echo "<td>$row->ocupado</td>";
-                                    echo "<td>$row->valor</td>";
-                                    echo "<td><button onclick=\"location.href='?page=editRooms&id=".$row->quarto_id."'\" class='btn btn-primary'>Atualizar</button></td>";
-                                    echo "<td><button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='?page=save&acao=excluir&id=".$row->quarto_id."';}else{false}\" class='btn btn-danger'>Deletar</button></td>";
-                                    echo "</tr>";
-                                }
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+            $qtd = $res->num_rows;
+
+            if ($qtd > 0) {
+                while ($row = $res->fetch_object()) {
+                    echo "<tr>";
+                    echo "<td>$row->numero</td>";
+                    echo "<td>$row->ocupado</td>";
+                    echo "<td>R$".number_format($row->valor,2,',','.')."</td>";
+                    echo "<td><button onclick=\"location.href='?page=editRooms&quarto_id=" . $row->quarto_id . "'\" class='btn btn-primary'>Editar</button></td>";
+                    echo "<td><button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='?page=save&acao=excluirQuarto&quarto_id=" . $row->quarto_id . "';}else{false}\" class='btn btn-danger'>Excluir</button></td>";
+                    echo "</tr>";
+                }
+            }
+            ?>
+        </tbody>
+    </table>
 </div>
