@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel - Cadastro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
@@ -46,31 +46,31 @@
     ?>
 
     <?php
-    include("config.php");
+    include("settings/config.php");
     switch (@$_REQUEST['page']) {
         case 'newClient':
-            include('newClient.php');
+            include('settings/newClient.php');
             break;
         case 'newRoom';
-            include('newRoom.php');
+            include('settings/newRoom.php');
             break;
         case 'list_clients';
-            include('list_clients.php');
+            include('settings/list_clients.php');
             break;
         case 'list_rooms';
-            include('list_rooms.php');
+            include('settings/list_rooms.php');
             break;
         case 'save';
-            include('save.php');
+            include('settings/save.php');
             break;
         case 'editRooms';
-            include('editRooms.php');
+            include('settings/editRooms.php');
             break;
         case 'editClients';
-            include('editClients.php');
+            include('settings/editClients.php');
             break;
         case 'newReserva';
-            include('newLocacao.php');
+            include('settings/newLocacao.php');
             break;
     }
     ?>
