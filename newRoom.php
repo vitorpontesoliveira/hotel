@@ -1,10 +1,10 @@
 <div class="container mt-5">
-    <div class="border p-4 mx-auto" style="max-width: 400px;">
-        <h2 class="text-center">Cadastros de Quartos</h2>
+    <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
+        <h2 class="text-center">Cadastro de Quartos</h2>
         <form action="?page=save" method="post">
             <input type="hidden" name="acao" value="cadastrarRoom">
             <div class="mb-3">
-                <label for="nomeQuarto" class="form-label">Numero do quarto:</label>
+                <label for="nomeQuarto" class="form-label">Número do quarto:</label>
                 <input type="number" class="form-control" name="number" id="number" placeholder="0" min="1" step="1" required>
             </div>
             <div class="form-group">

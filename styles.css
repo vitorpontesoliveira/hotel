@@ -1,0 +1,51 @@
+body {
+    background: linear-gradient(to bottom, #1c1668, #2980b9);
+    /* Gradiente de azul claro para azul escuro */
+    background-attachment: fixed;
+    /* Fixa o fundo para que não se repita */
+    margin: 0;
+    /* Remover margens padrão do body */
+    padding: 0;
+    /* Remover preenchimento padrão do body */
+    font-family: Arial, sans-serif;
+    /* Fonte para o texto na página */
+}
+
+/* Estilo do avião sem animação (quando a classe "animate-plane" não está presente) */
+.airplane {
+    width: 100px;
+    height: 60px;
+    /* Outros estilos sem animação */
+}
+
+/* Estilo do avião com animação (quando a classe "animate-plane" está presente) */
+.airplane.animate-plane {
+    background-image: url('imgs/aviao.png');
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    animation: movePlane 10s linear infinite;
+}
+
+@keyframes movePlane {
+    0% {
+        left: -100px;
+    }
+    100% {
+        left: 92%;
+    }
+}
+
+/* Estilo para o texto "Bem Vindo" */
+.welcome-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 24px;
+    color: white;
+}
+
+.cornav {
+    background-color: #1c166800; /* Cor de fundo azul escuro (pode personalizar a cor aqui) */
+}

@@ -41,8 +41,8 @@ switch ($_REQUEST['acao']) {
 
     case 'newReserva':
         $sql = "INSERT INTO locacoes(
-            numero,
-            nome,
+            quarto_id,
+            cliente_id,
             data
             ) VALUES(
                 ".$_POST['numero'].",

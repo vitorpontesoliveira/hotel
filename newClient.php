@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    <div class="border p-4 mx-auto" style="max-width: 400px;">
+    <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Cadastros de Cliente</h2>
         <form action="?page=save" method="post">
             <input type="hidden" name="acao" value="cadastrarClient">

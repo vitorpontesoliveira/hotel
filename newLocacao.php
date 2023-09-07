@@ -1,5 +1,6 @@
 <div class="container mt-5">
-        <h1>Cadastro de Locação</h1>
+    <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
+        <h2 class="text-center">Nova locação</h2>
         <form action="?page=save" method="post">
             <input type="hidden" name="acao" value="newReserva">
             <div class="mb-3">

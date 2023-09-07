@@ -1,6 +1,7 @@
 <div class="container mt-5">
     <?php
-    $sql = "SELECT * FROM quartos WHERE quarto_id = " . $_REQUEST["quarto_id"];
+    $sql = "SELECT * FROM quartos
+            WHERE quarto_id = " . $_REQUEST["quarto_id"];
     $res = $conn->query($sql);
     $row = $res->fetch_object();
     ?>
