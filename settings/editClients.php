@@ -4,7 +4,7 @@
     $res = $conn->query($sql);
     $row = $res->fetch_object();
     ?>
-    <div class="border p-4 mx-auto" style="max-width: 400px;">
+    <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Edição de clientes</h2>
         <form action="?page=save" method="post">
             <input type="hidden" name="acao" value="editClients">

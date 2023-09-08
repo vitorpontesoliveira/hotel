@@ -37,7 +37,6 @@
         </div>
     </nav>
 
-    <!-- Verifica se a página atual é index.php -->
     <?php
     if ($_SERVER['REQUEST_URI'] === '/hotel/index.php') {
         echo '<div class="airplane animate-plane"></div>';
@@ -60,6 +59,9 @@
         case 'list_rooms';
             include('settings/list_rooms.php');
             break;
+        case 'list_reservas';
+            include('settings/list_reservas.php');
+            break;
         case 'save';
             include('settings/save.php');
             break;
@@ -68,6 +70,9 @@
             break;
         case 'editClients';
             include('settings/editClients.php');
+            break;
+            case 'editReservas';
+            include('settings/editReservas.php');
             break;
         case 'newReserva';
             include('settings/newLocacao.php');
