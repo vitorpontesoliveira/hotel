@@ -39,25 +39,26 @@ switch ($_REQUEST['acao']) {
         }
         break;
 
-    case 'newReserva':
-        $sql = "INSERT INTO locacoes(
-                quarto_id,
-                cliente_id
-            ) VALUES(
-                " . $_POST['quarto_id'] . ",
-                '" . $_POST['cliente_id'] . "'
-            )";
-
-        $res = $conn->query($sql);
-
-        if ($res === true) {
-            echo "<script>alert('Nova reserva foi cadastrada com sucesso!');</script>";
-            echo "<script>location.href='?page=list_reservas';</script>";
-        } else {
-            echo "Erro ao cadastrar: " . mysqli_error($conn);
-        }
-        break;
-
+        case 'newReserva':
+            $sql = "INSERT INTO locacoes(
+                    quarto_id,
+                    cliente_id,
+                    data
+                ) VALUES(
+                    " . $_POST['quarto_id'] . ",
+                    '" . $_POST['cliente_id'] . "',
+                    '" . $_POST['data_locacao'] . "'
+                )";
+        
+            $res = $conn->query($sql);
+        
+            if ($res === true) {
+                echo "<script>alert('Nova reserva foi cadastrada com sucesso!');</script>";
+                echo "<script>location.href='?page=list_reservas';</script>";
+            } else {
+                echo "Erro ao cadastrar: " . mysqli_error($conn);
+            }
+            break;        
 
     case 'editRooms';
         $numero = $_POST['number'];
@@ -137,7 +138,7 @@ switch ($_REQUEST['acao']) {
 
         case 'excluirReserva';
         $sql = "DELETE FROM locacoes 
-        WHERE locacao_id=" . $_REQUEST["cliente_id"];
+        WHERE locacao_id=" . $_REQUEST["locacao_id"];
 
         $res = mysqli_query($conn, $sql);
 
