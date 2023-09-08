@@ -1,13 +1,16 @@
 <div class="container mt-5">
     <?php
-    $sql = "SELECT * FROM clientes WHERE cliente_id = " . $_REQUEST["cliente_id"];
-    $res = $conn->query($sql);
-    $row = $res->fetch_object();
+    $sql = "SELECT * FROM clientes WHERE cliente_id = :cliente_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':cliente_id', $_REQUEST["cliente_id"]);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_OBJ);
     ?>
+
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Edição de clientes</h2>
-        <form action="?page=save" method="post">
-            <input type="hidden" name="acao" value="editClients">
+        <form action="?page=Save" method="post">
+            <input type="hidden" name="acao" value="EditClients">
             <input type="hidden" name="id" value="<?= $row->cliente_id ?>">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>

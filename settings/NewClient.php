@@ -1,8 +1,8 @@
 <div class="container mt-5">
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Cadastros de Cliente</h2>
-        <form action="?page=save" method="post">
-            <input type="hidden" name="acao" value="cadastrarClient">
+        <form action="?page=Save" method="post">
+            <input type="hidden" name="acao" value="NewClient">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome completo" required>

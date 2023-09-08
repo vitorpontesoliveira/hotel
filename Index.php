@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel - Cadastro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/Styles.css">
 
 </head>
 
@@ -15,22 +15,22 @@
         <div class="container-fluid">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="Index.php">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Quartos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="?page=newRoom">Cadastrar</a></li>
-                        <li><a class="dropdown-item" href="?page=newReserva">Reservar</a></li>
-                        <li><a class="dropdown-item" href="?page=list_rooms">Listar quartos</a></li>
-                        <li><a class="dropdown-item" href="?page=list_reservas">Listar reservas</a></li>
+                        <li><a class="dropdown-item" href="?page=NewRoom">Cadastrar</a></li>
+                        <li><a class="dropdown-item" href="?page=NewReserv">Reservar</a></li>
+                        <li><a class="dropdown-item" href="?page=ListRooms">Listar quartos</a></li>
+                        <li><a class="dropdown-item" href="?page=ListReserv">Listar reservas</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Clientes</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="?page=newClient">Cadastrar</a></li>
-                        <li><a class="dropdown-item" href="?page=list_clients">Listar</a></li>
+                        <li><a class="dropdown-item" href="?page=NewClient">Cadastrar</a></li>
+                        <li><a class="dropdown-item" href="?page=ListClients">Listar</a></li>
 
                     </ul>
                 </li>
@@ -39,43 +39,42 @@
 
     <?php
     if ($_SERVER['REQUEST_URI'] === '/hotel/index.php') {
-        echo '<div class="airplane animate-plane"></div>';
         echo '<div class="welcome-text">Bem Vindo</div>';
     }
     ?>
 
     <?php
-    include("settings/config.php");
+    include("settings/Config.php");
     switch (@$_REQUEST['page']) {
-        case 'newClient':
-            include('settings/newClient.php');
+        case 'NewClient':
+            include('settings/NewClient.php');
             break;
-        case 'newRoom';
-            include('settings/newRoom.php');
+        case 'NewReserv';
+            include('settings/NewReserv.php');
             break;
-        case 'list_clients';
-            include('settings/list_clients.php');
+        case 'NewRoom';
+            include('settings/NewRoom.php');
             break;
-        case 'list_rooms';
-            include('settings/list_rooms.php');
+        case 'ListClients';
+            include('settings/ListClients.php');
             break;
-        case 'list_reservas';
-            include('settings/list_reservas.php');
+        case 'ListRooms';
+            include('settings/ListRooms.php');
             break;
-        case 'save';
-            include('settings/save.php');
+        case 'ListReserv';
+            include('settings/ListReservs.php');
             break;
-        case 'editRooms';
-            include('settings/editRooms.php');
+        case 'Save';
+            include('settings/Save.php');
             break;
-        case 'editClients';
-            include('settings/editClients.php');
+        case 'EditRooms';
+            include('settings/EditRooms.php');
             break;
-            case 'editReservas';
-            include('settings/editReservas.php');
+        case 'EditClients';
+            include('settings/EditClients.php');
             break;
-        case 'newReserva';
-            include('settings/newLocacao.php');
+        case 'EditLocation';
+            include('settings/EditLocation.php');
             break;
     }
     ?>

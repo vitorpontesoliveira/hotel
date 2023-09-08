@@ -1,0 +1,19 @@
+body {
+    background: linear-gradient(to bottom, #f1fffd, #b9cfe0a6);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.welcome-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+}
+
+.cornav {
+    background-color: #1c166800;
+}

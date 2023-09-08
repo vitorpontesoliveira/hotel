@@ -15,8 +15,8 @@
 
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Nova locação</h2>
-        <form action="?page=save" method="post">
-            <input type="hidden" name="acao" value="editReservas">
+        <form action="?page=Save" method="post">
+            <input type="hidden" name="acao" value="EditLocation">
             <input type="hidden" name="id" value="<?= $cliente_id ?>">
             <div class="mb-3">
                 <label for="cliente_id" class="form-label">Nome do Cliente</label>
