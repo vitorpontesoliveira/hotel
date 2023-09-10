@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #1c1668, #2980b9);
+    background: linear-gradient(to bottom,#8c8aa3, #174869);
     /* Gradiente de azul claro para azul escuro */
     background-attachment: fixed;
     /* Fixa o fundo para que não se repita */
@@ -20,12 +20,12 @@ body {
 
 /* Estilo do avião com animação (quando a classe "animate-plane" está presente) */
 .airplane.animate-plane {
-    background-image: url('imgs/aviao.png');
+    background-image: url('imgs/aviao4.png');
     background-size: cover;
     position: absolute;
     top: 50%;
     left: -100px;
-    animation: movePlane 10s linear infinite;
+    animation: movePlane 7s linear infinite;
 }
 
 @keyframes movePlane {
@@ -48,4 +48,8 @@ body {
 
 .cornav {
     background-color: #1c166800; /* Cor de fundo azul escuro (pode personalizar a cor aqui) */
+}
+
+.color{
+    color: white;
 }

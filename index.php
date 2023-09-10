@@ -17,7 +17,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown color">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Quartos</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="?page=newRoom">Cadastrar</a></li>
@@ -26,7 +26,7 @@
                         <li><a class="dropdown-item" href="?page=list_reservas">Listar reservas</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown color">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Clientes</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="?page=newClient">Cadastrar</a></li>
