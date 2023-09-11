@@ -68,7 +68,7 @@ switch ($_REQUEST['acao']) {
                 $stmt->execute();
 
                 echo "<script>alert('Nova reserva foi cadastrada com sucesso!');</script>";
-                echo "<script>location.href='?page=ListReserv';</script>";
+                echo "<script>location.href='?page=ListReservs';</script>";
             }
         } catch (PDOException $e) {
             echo "Erro ao cadastrar: " . $e->getMessage();

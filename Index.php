@@ -7,6 +7,8 @@
     <title>Hotel - Cadastro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="css/Styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 </head>
 
@@ -23,7 +25,7 @@
                         <li><a class="dropdown-item" href="?page=NewRoom">Cadastrar</a></li>
                         <li><a class="dropdown-item" href="?page=NewReserv">Reservar</a></li>
                         <li><a class="dropdown-item" href="?page=ListRooms">Listar quartos</a></li>
-                        <li><a class="dropdown-item" href="?page=ListReserv">Listar reservas</a></li>
+                        <li><a class="dropdown-item" href="?page=ListReservs">Listar reservas</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -38,7 +40,7 @@
     </nav>
 
     <?php
-    if ($_SERVER['REQUEST_URI'] === '/hotel/index.php') {
+    if ($_SERVER['REQUEST_URI'] === '/hotel/Index.php') {
         echo '<div class="welcome-text">Bem Vindo</div>';
     }
     ?>
@@ -61,7 +63,7 @@
         case 'ListRooms';
             include('settings/ListRooms.php');
             break;
-        case 'ListReserv';
+        case 'ListReservs';
             include('settings/ListReservs.php');
             break;
         case 'Save';
@@ -78,7 +80,12 @@
             break;
     }
     ?>
-
+    <script>
+        flatpickr('#data_locacao', {
+            dateFormat: 'Y-m-d',
+            enableTime: false,
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 

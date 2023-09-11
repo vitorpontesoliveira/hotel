@@ -45,8 +45,9 @@
             </div>
             <div class="mb-3">
                 <label for="data_locacao" class="form-label">Data da Locação</label>
-                <input type="date" class="form-control" id="data_locacao" name="data_locacao" required>
+                <input type="text" class="form-control" id="data_locacao" name="data_locacao" required>
             </div>
+
             <div class="text-center">
                 <br>
                 <input type="submit" value="Cadastrar" class="btn btn-primary">
