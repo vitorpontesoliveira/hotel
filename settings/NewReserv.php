@@ -35,7 +35,7 @@
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             $quarto_id = $row['quarto_id'];
                             $numero = $row['numero'];
-                            echo "<option value='$quarto_id'>$quarto_id - $numero</option>";
+                            echo "<option value='$numero'>$numero</option>";
                         }
                     } else {
                         echo "Erro ao obter quartos disponíveis: " . mysqli_error($pdo);
