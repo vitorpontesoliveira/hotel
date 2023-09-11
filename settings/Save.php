@@ -49,19 +49,32 @@ switch ($_REQUEST['acao']) {
         $data_locacao = $_POST['data_locacao'];
 
         try {
-            $sql = "INSERT INTO locacoes (quarto_id, cliente_id, data) VALUES(:quarto_id, :cliente_id, :data_locacao)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':quarto_id', $quarto_id);
-            $stmt->bindParam(':cliente_id', $cliente_id);
-            $stmt->bindParam(':data_locacao', $data_locacao);
-            $stmt->execute();
+            $sql_check = "SELECT COUNT(*) FROM locacoes WHERE quarto_id = :quarto_id AND data = :data_locacao";
+            $stmt_check = $pdo->prepare($sql_check);
+            $stmt_check->bindParam(':quarto_id', $quarto_id);
+            $stmt_check->bindParam(':data_locacao', $data_locacao);
+            $stmt_check->execute();
+            $num_reservas = $stmt_check->fetchColumn();
 
-            echo "<script>alert('Nova reserva foi cadastrada com sucesso!');</script>";
-            echo "<script>location.href='?page=ListReserv';</script>";
+            if ($num_reservas > 0) {
+                echo "<script>alert('Este quarto já está reservado para a data especificada. Por favor, escolha outra data ou quarto.');</script>";
+                echo "<script>window.history.back();</script>";
+            } else {
+                $sql = "INSERT INTO locacoes (quarto_id, cliente_id, data) VALUES(:quarto_id, :cliente_id, :data_locacao)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(':quarto_id', $quarto_id);
+                $stmt->bindParam(':cliente_id', $cliente_id);
+                $stmt->bindParam(':data_locacao', $data_locacao);
+                $stmt->execute();
+
+                echo "<script>alert('Nova reserva foi cadastrada com sucesso!');</script>";
+                echo "<script>location.href='?page=ListReserv';</script>";
+            }
         } catch (PDOException $e) {
             echo "Erro ao cadastrar: " . $e->getMessage();
         }
         break;
+
 
     case 'EditRooms':
         $quarto_id = $_REQUEST['id'];
