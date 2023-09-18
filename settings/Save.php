@@ -25,7 +25,7 @@ switch ($_REQUEST['acao']) {
     case 'NewRoom':
         $numero = $_POST['number'];
         $condicaoQuarto = $_POST['condicaoQuarto'];
-        $ocupado = ($condicaoQuarto == 'Sim') ? 1 : 0;
+        $ocupado = ($condicaoQuarto == 'Sim')? 1 : 0;
         $valor = $_POST['val'];
 
         try {

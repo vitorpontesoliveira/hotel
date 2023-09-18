@@ -5,6 +5,9 @@
     $stmt->bindParam(':quarto_id', $_REQUEST["quarto_id"]);
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_OBJ);
+
+    $padrao = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
+
     ?>
     <div class="container mt-5">
         <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
@@ -25,7 +28,7 @@
                     <label for="validationCustomUsername" class="form-label">Valor:</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">R$</span>
-                        <input type="number" class="form-control" name="val" id="val" placeholder="Valor" step="0.01" value="<?= number_format($row->valor, 2)?>" required>
+                        <input type="number" class="form-control" name="val" id="val" placeholder="Valor" step="0.01" value="<?= numfmt_format_currency($padrao,$valor,"BRL")?>" required>
                     </div>
                 </div>
                 <div class="text-center mt-3">

@@ -9,8 +9,8 @@
             </div>
             <div class="form-group">
                 <label for="condicaoQuarto">O quarto está disponível?</label><br>
-                <input type="radio" name="ocupado" value="Sim" required> Sim<br>
-                <input type="radio" name="ocupado" value="Não" required> Não
+                <input type="radio" name="condicaoQuarto" value="Sim" required> Sim<br>
+                <input type="radio" name="condicaoQuarto" value="Não" required> Não
             </div>
             <div class="col-mb-3">
                 <label for="validationCustomUsername" class="form-label">Valor:</label>
