@@ -5,7 +5,8 @@
             <input type="hidden" name="acao" value="NewClient">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>
-                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome completo" required>
+                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome completo" oninput="validarNome()" required>
+                <span id="nomeErro" style="color: red;"></span>
             </div>
             <div class="mb-3">
                 <label for="telefone" class="form-label">Telefone:</label>

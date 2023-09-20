@@ -1,0 +1,22 @@
+{
+    "name": "vitor/hotel",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\":"tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vitorpontesdeoliveira",
+            "email": "vitor.pontes@plantae.agr.br"
+        }
+    ],
+    "require": {
+        "phptailors/phpunit-common": "^0.1.2"
+    }
+}

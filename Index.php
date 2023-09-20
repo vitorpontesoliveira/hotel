@@ -47,13 +47,13 @@
     include("settings/Config.php");
     switch (@$_REQUEST['page']) {
         case 'NewClient':
-            include('settings/NewClient.php');
+            include('settings/forms/NewClient.php');
             break;
         case 'NewReserv';
-            include('settings/NewReserv.php');
+            include('settings/forms/NewReserv.php');
             break;
         case 'NewRoom';
-            include('settings/NewRoom.php');
+            include('settings/forms/NewRoom.php');
             break;
         case 'ListClients';
             include('settings/ListClients.php');
@@ -80,6 +80,7 @@
     ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="css/scripts.js"></script>
 </body>
 
 </html>

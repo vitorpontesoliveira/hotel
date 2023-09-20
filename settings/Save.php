@@ -1,18 +1,20 @@
 <?php
-require 'Config.php';
+require_once 'Config.php';
+require_once 'Cadastro.php';
 
 switch ($_REQUEST['acao']) {
     case 'NewClient':
-        $nome = $_POST['nome'];
-        $telefone = $_POST['telefone'];
-        $email = $_POST['email'];
+        $c1 = new Cliente();
+        $c1->setNome($_POST['nome']);
+        $c1->setTelefone($_POST['telefone']);
+        $c1->setEmail($_POST['email']);
 
         try {
             $sql = "INSERT INTO clientes (nome, telefone, email) VALUES(:nome, :telefone, :email)";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':telefone', $telefone);
-            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':nome', $c1->getNome());
+            $stmt->bindParam(':telefone', $c1->getTelefone());
+            $stmt->bindParam(':email', $c1->getEmail());
             $stmt->execute();
 
             echo "<script>alert('Você foi cadastrado com sucesso!');</script>";
