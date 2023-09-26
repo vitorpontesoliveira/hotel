@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Cadastros de Cliente</h2>
-        <form action="?page=Save" method="post">
+        <form action="settings/controller/ClienteController.php" method="post">
             <input type="hidden" name="acao" value="NewClient">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>
