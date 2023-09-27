@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
@@ -9,9 +9,9 @@ abstract class Controller
         // $arquivo_view = "View/Modules/$view.php";
         $arquivo_view = VIEWS . $view . ".php";
 
-        if(file_exists($arquivo_view))
+        if (file_exists($arquivo_view))
             include $arquivo_view;
-        else 
-            exit('Arquivo da View não existe. Arquivo: '.$view);
+        else
+            exit('Arquivo da View não existe. Arquivo: ' . $view);
     }
 }

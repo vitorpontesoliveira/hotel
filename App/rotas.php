@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use App\Controller\ClienteController;
 
@@ -19,18 +19,13 @@ switch ($url) {
 
     case '/cliente/form/save';
         ClienteController::save();
-    break;
+        break;
 
     case '/cliente/delete';
         ClienteController::delete();
-    break;
+        break;
 
     default:
         echo "erro";
         break;
 }
-
-
-
-
-?>

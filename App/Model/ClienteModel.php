@@ -9,7 +9,7 @@ class ClienteModel extends Model
 
     public $cliente_id, $nome, $telefone, $email;
 
-    
+
     public function save()
     {
 

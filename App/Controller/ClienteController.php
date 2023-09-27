@@ -19,9 +19,9 @@ class ClienteController extends Controller
 
         $model = new ClienteModel();
 
-        if(isset($_GET['cliente_id']))
+        if (isset($_GET['cliente_id']))
 
-        $model = $model->getById((int) $_GET['cliente_id']);
+            $model = $model->getById((int) $_GET['cliente_id']);
 
         include 'View/Modules/Cliente/FormCliente.php';
     }
@@ -38,7 +38,6 @@ class ClienteController extends Controller
         $model->save();
 
         header("Location: /Cliente");
-
     }
 
     public static function delete()
@@ -49,7 +48,5 @@ class ClienteController extends Controller
         $model->delete((int)$_GET['cliente_id']);
 
         header("Location: /cliente");
-
     }
-
 }
