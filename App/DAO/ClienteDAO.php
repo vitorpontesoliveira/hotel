@@ -23,7 +23,7 @@ class ClienteDAO extends DAO
         $stmt->bindValue(':nome', $model->nome);
         $stmt->bindValue(':telefone', $model->telefone);
         $stmt->bindValue(':email', $model->email);
-
+        var_dump($model);
         return $stmt->execute();
     }
 

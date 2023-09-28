@@ -31,10 +31,9 @@ class QuartoController extends Controller
     {
         $model = new QuartoModel();
         $model->quarto_id = $_POST['quarto_id'];
-        $model->ocupado = ($_POST['ocupado'] === 'Sim');
+        $model->ocupado = ($_POST['ocupado'] === 'Sim') ? 1 : 0;
         $model->numero = $_POST['numero'];
         $model->valor = $_POST['valor'];
-        var_dump($model);
 
         $model->save();
 

@@ -13,11 +13,14 @@ class QuartoModel extends Model
     {
         $dao = new QuartoDAO();
 
-        if (empty($this->quarto_id)) {
+        if (empty($this->quarto_id)) 
+        {
             $dao->insert($this);
-        } else {
+        }
+        else {
             $dao->update($this);
         }
+       
     }
 
     public function getAllRows()
@@ -25,6 +28,7 @@ class QuartoModel extends Model
         $dao = new QuartoDAO();
 
         $this->rows = $dao->select();
+        
     }
 
     public function getById(int $quarto_id)
@@ -34,6 +38,7 @@ class QuartoModel extends Model
         $obj = $dao->selectByID($quarto_id);
 
         return ($obj) ? $obj : new QuartoModel();
+        
     }
 
     public function delete(int $quarto_id)
@@ -41,5 +46,7 @@ class QuartoModel extends Model
         $dao = new QuartoDAO();
 
         $dao->delete($quarto_id);
+    
     }
+    
 }

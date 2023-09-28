@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\ClienteController;
+use App\Controller\LocacaoController;
 use App\Controller\QuartoController;
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -38,8 +39,24 @@ switch ($url) {
         QuartoController::save();
     break;
 
-    case 'quarto/delete':
+    case '/quarto/delete':
         QuartoController::delete();
+    break;
+
+    case '/locacao':
+        LocacaoController::index();
+    break;
+
+    case '/locacao/form':
+        LocacaoController::form();
+    break;
+
+    case '/locacao/form/save':
+        LocacaoController::save();
+    break;
+
+    case '/locacao/delete':
+        LocacaoController::delete();
     break;
 
     default:

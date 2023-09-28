@@ -23,7 +23,6 @@ class QuartoDAO extends DAO
         $stmt->bindValue(':numero', $model->numero);
         $stmt->bindValue(':ocupado', $model->ocupado);
         $stmt->bindValue(':valor', $model->valor);
-        var_dump($model);
         return $stmt->execute();
     }
 
@@ -36,6 +35,7 @@ class QuartoDAO extends DAO
         $stmt->bindValue(':numero', $model->numero);
         $stmt->bindValue(':valor', $model->valor);
         $stmt->bindValue(':quarto_id', $model->quarto_id);
+    
         return $stmt->execute();
     }
 
@@ -56,7 +56,6 @@ class QuartoDAO extends DAO
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':quarto_id', $quarto_id);
         $stmt->execute();
-
         return $stmt->fetchObject("App\Model\QuartoModel");
     }
 
