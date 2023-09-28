@@ -28,7 +28,6 @@ class ClienteController extends Controller
 
     public static function save()
     {
-
         $model = new ClienteModel();
         $model->cliente_id = $_POST['cliente_id'];
         $model->nome = $_POST['nome'];

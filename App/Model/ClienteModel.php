@@ -12,10 +12,10 @@ class ClienteModel extends Model
 
     public function save()
     {
-
         $dao = new ClienteDAO();
 
-        if (empty($this->cliente_id)) {
+        if (empty($this->cliente_id)) 
+        {
             $dao->insert($this);
         } else {
             $dao->update($this);
@@ -24,7 +24,6 @@ class ClienteModel extends Model
 
     public function getAllRows()
     {
-
         $dao = new ClienteDAO();
 
         $this->rows = $dao->select();
