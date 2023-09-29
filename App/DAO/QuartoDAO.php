@@ -39,7 +39,7 @@ class QuartoDAO extends DAO
         return $stmt->execute();
     }
 
-    public function select()
+    public function selectQuartos()
     {
         $sql = "SELECT * FROM quartos";
 

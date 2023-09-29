@@ -23,11 +23,13 @@ class QuartoModel extends Model
        
     }
 
+    
+
     public function getAllRows()
     {
         $dao = new QuartoDAO();
 
-        $this->rows = $dao->select();
+        $this->rows = $dao->selectQuartos();
         
     }
 

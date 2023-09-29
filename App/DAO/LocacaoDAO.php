@@ -16,28 +16,36 @@ class LocacaoDAO extends DAO
 
     public function insert(LocacaoModel $model)
     {
-        $sql_check = "SELECT COUNT(*) FROM locacoes WHERE quarto_id = :quarto_id AND data = :data_locacao";
+        $sql = "INSERT INTO locacoes (quarto_id, cliente_id, data) VALUES (:quarto_id, :cliente_id, :data)";
 
-        $stmt_check = $this->pdo->prepare($sql_check);
+        $stmt = $this->pdo->prepare($sql);
 
-        $stmt_check->bindValue(':quarto_id', $model->quarto_id);
-        $stmt_check->bindValue(':data_locacao', $model->data_locacao);
-        $stmt_check->execute();
-        $num_reservas = $stmt_check->fetchColumn();
-        var_dump($num_reservas);
-
-        if ($num_reservas > 0) {
-            echo "<script>alert('Este quarto já está reservado para a data especificada. Por favor, escolha outra data ou quarto.');</script>";
-            echo "<script>window.history.back();</script>";
-        } else {
-            $sql = "INSERT INTO locacoes (quarto_id, cliente_id, data) VALUES(:quarto_id, :cliente_id, :data_locacao)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(':quarto_id', $model->quarto_id);
-            $stmt->bindValue(':cliente_id', $model->cliente_id);
-            $stmt->bindValue(':data_locacao', $model->data_locacao);
-            $stmt->execute();
-        }
+        $stmt->bindValue(':quarto_id', $model->quarto_id);
+        $stmt->bindValue(':cliente_id', $model->cliente_id);
+        $stmt->bindValue(':data', $model->data);
+        return $stmt->execute();
     }
+
+    public function selectClientes()
+    {
+        $sql = "SELECT * FROM clientes";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function selectQuartos()
+    {
+        $sql = "SELECT * FROM quartos";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_CLASS);
+    }
+
 
     public function select()
     {
@@ -54,13 +62,13 @@ class LocacaoDAO extends DAO
 
     public function selectByID(int $locacao_id)
     {
-        $sql = "SELECT * FROM locacaoes WHERE locacao_id = :locacao_id";
+        $sql = "SELECT * FROM locacoes WHERE locacao_id = :locacao_id";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':locacao_id', $locacao_id);
         $stmt->execute();
 
-        return $stmt->fetchObject("App\Model\LocacaoModel");
+        return $stmt->fetchObject("App\Model\ClienteModel");
     }
 
     public function delete(int $locacao_id)

@@ -19,24 +19,20 @@
                     <label for="cliente_id" class="form-label">Nome do Cliente</label>
                     <select class="form-select" id="cliente_id" name="cliente_id" required>
                         <option value="" disabled selected>Escolha um cliente</option>
-                        <?php
-                        $sql = "SELECT cliente_id, nome FROM clientes";
-                        $cliente_id = $item['cliente_id'];
-                        $nome = $item['nome'];
-                        echo "<option value='$cliente_id'>$cliente_id - $nome</option>";
-                        ?>
+                        <?php foreach ($model->rows as $item) : ?>
+                            <option><?= $item->nome ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="quarto_id" class="form-label">Numero do quarto</label>
                     <select class="form-select" id="quarto_id" name="quarto_id" required>
                         <option value="" disabled selected>Escolha um quarto</option>
-                        <?php
-                        $sql = "SELECT quarto_id, numero FROM quartos";
-                        $quarto_id = $item['quarto_id'];
-                        $numero = $item['numero'];
-                        echo "<option value='$quarto_id'>$numero</option>";
-                        ?>
+                        <?php foreach ($model->rows as $item) : ?>
+                            <option><?= $item->numero?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="mb-3">
