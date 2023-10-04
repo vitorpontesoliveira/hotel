@@ -38,11 +38,10 @@ class LocacaoController extends Controller
         $model->cliente_id = $_POST['cliente_id'];
         $model->quarto_id = $_POST['quarto_id'];
         $model->data = $_POST['data_locacao'];
-        var_dump($model);
 
         $model->save();
 
-        header("Location: /locacao");
+        // header("Location: /locacao");
     }
 
     public static function delete()

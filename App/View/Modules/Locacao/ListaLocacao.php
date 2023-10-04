@@ -35,8 +35,6 @@
                         <td><?= $item->numero_quarto ?></td>
                         <td><?= $item->data_formatada ?></td>
 
-                        <td><button class='btn btn-danger'><a href="/locacao/form?locacao_id=<?= $item->locacao_id ?>">Editar</a></button>
-                        </td>
                         <td><button class='btn btn-danger'><a href="/locacao/delete?locacao_id=<?= $item->locacao_id ?>">Excluir</a></button></td>
 
                     </tr>

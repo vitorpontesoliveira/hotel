@@ -15,7 +15,6 @@
             <h2 class="text-center">Nova locação</h2>
             <form action="/locacao/form/save" method="post">
                 <input type="hidden" value="<?= $model->locacao_id ?>" name="locacao_id">
-
                 <div class="mb-3">
                     <label for="cliente_id" class="form-label">Nome do Cliente</label>
                     <select class="form-select" id="cliente_id" name="cliente_id" required>

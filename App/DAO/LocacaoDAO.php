@@ -14,10 +14,66 @@ class LocacaoDAO extends DAO
         parent::__construct();
     }
 
+    // public function insert(LocacaoModel $model)
+    // {
+    //     $sql = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES ( :cliente_id, :quarto_id, :data)";
+
+    //     $stmt = $this->pdo->prepare($sql);
+
+    //     $stmt->bindValue(':cliente_id', $model->cliente_id);
+    //     $stmt->bindValue(':quarto_id', $model->quarto_id);
+    //     $stmt->bindValue(':data', $model->data);
+    //     return $stmt->execute();
+    // }
+
     public function insert(LocacaoModel $model)
     {
-        $sql = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES ( :cliente_id, :quarto_id, :data)";
+        // Verificar se já existe uma reserva para o mesmo quarto na mesma data
+        $sql_check = "SELECT COUNT(*) FROM locacoes WHERE quarto_id = :quarto_id AND data = :data_locacao";
+        $stmt_check = $this->pdo->prepare($sql_check);
+        $stmt_check->bindParam(':quarto_id', $model->quarto_id);
+        $stmt_check->bindParam(':data_locacao', $model->data);
+        $stmt_check->execute();
+        $num_reservas = $stmt_check->fetchColumn();
 
+        if ($num_reservas > 0) {
+            // Já existe uma reserva para o mesmo quarto na mesma data
+            $mensagem = "Este quarto já está reservado para a data especificada. Por favor, escolha outra data ou quarto.";
+            echo "<script>alert('$mensagem');</script>";
+
+            // Adicionando um pequeno atraso antes do redirecionamento
+            echo "<script>document.location.href='/locacao/form';</script>";
+
+            return false; // Por exemplo, retornar false para indicar que a inserção falhou
+        }
+
+        // Se não houver reservas existentes, proceda com a inserção
+        $sql_insert = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES (:cliente_id, :quarto_id, :data)";
+        $stmt_insert = $this->pdo->prepare($sql_insert);
+
+        $stmt_insert->bindValue(':cliente_id', $model->cliente_id);
+        $stmt_insert->bindValue(':quarto_id', $model->quarto_id);
+        $stmt_insert->bindValue(':data', $model->data);
+
+        if ($stmt_insert->execute()) {
+            echo "<script>alert('Nova reserva foi cadastrada com sucesso!');</script>";
+            header("Location: /locacao");
+            return true; // Indica que a inserção foi bem-sucedida
+        } else {
+            // Se ocorrer um erro durante a inserção, você pode tratar de acordo
+            $mensagemErro = "Erro ao cadastrar a reserva. Por favor, tente novamente.";
+            echo "<script>alert('$mensagemErro');</script>";
+            return false; // Indica que a inserção falhou
+        }
+    }
+
+
+    public function update(LocacaoModel $model)
+    {
+        // Atualiza as colunas da tabela cliente de acordo com o cliente_id recebido. 
+        $sql = "UPDATE locacoes SET cliente_id = :cliente_id, quarto_id = :quarto_id, data = :data WHERE locacao_id = :locacao_id";
+
+        // Prepara a consulta SQL atráves do objeto PDO.
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':cliente_id', $model->cliente_id);
