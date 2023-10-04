@@ -16,19 +16,19 @@ class LocacaoDAO extends DAO
 
     public function insert(LocacaoModel $model)
     {
-        $sql = "INSERT INTO locacoes (quarto_id, cliente_id, data) VALUES (:quarto_id, :cliente_id, :data)";
+        $sql = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES ( :cliente_id, :quarto_id, :data)";
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':quarto_id', $model->quarto_id);
         $stmt->bindValue(':cliente_id', $model->cliente_id);
+        $stmt->bindValue(':quarto_id', $model->quarto_id);
         $stmt->bindValue(':data', $model->data);
         return $stmt->execute();
     }
 
     public function selectClientes()
     {
-        $sql = "SELECT * FROM clientes";
+        $sql = "SELECT cliente_id, nome FROM clientes";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
@@ -45,7 +45,6 @@ class LocacaoDAO extends DAO
 
         return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
-
 
     public function select()
     {

@@ -17,18 +17,17 @@ class LocacaoController extends Controller
 
     public static function form()
     {
-
         $model = new LocacaoModel();
         $model->getAllClients();
-        $model->getAllQuartos();
-
+        $model2 = new LocacaoModel();
+        $model2->getAllQuartos();
 
         if (isset($_GET['locacao_id'])) {
             $locacao_id = (int)$_GET['locacao_id'];
             $model = $model->getById($locacao_id);
         }
-        
-        parent::render('Locacao/FormLocacao', $model);
+
+        parent::render('Locacao/FormLocacao', $model, $model2);
 
     }
 
@@ -36,13 +35,14 @@ class LocacaoController extends Controller
     {
         $model = new LocacaoModel();
         $model->locacao_id = $_POST['locacao_id'];
-        $model->quarto_id = $_POST['quarto_id'];
         $model->cliente_id = $_POST['cliente_id'];
-        $model->data = $_POST['data'];
+        $model->quarto_id = $_POST['quarto_id'];
+        $model->data = $_POST['data_locacao'];
+        var_dump($model);
 
         $model->save();
 
-        header("Location: /Locacao");
+        header("Location: /locacao");
     }
 
     public static function delete()
@@ -51,6 +51,6 @@ class LocacaoController extends Controller
 
         $model->delete((int)$_GET['locacao_id']);
 
-        header("Location: /Locacao");
+        header("Location: /locacao");
     }
 }

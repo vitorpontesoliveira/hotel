@@ -23,8 +23,6 @@ class QuartoModel extends Model
        
     }
 
-    
-
     public function getAllRows()
     {
         $dao = new QuartoDAO();

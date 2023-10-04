@@ -4,9 +4,8 @@ namespace App\Controller;
 
 abstract class Controller
 {
-    protected static function render($view, $model = null)
+    protected static function render($view, $model = null, $model2 = null)
     {
-        // $arquivo_view = "View/Modules/$view.php";
         $arquivo_view = VIEWS . $view . ".php";
 
         if (file_exists($arquivo_view))

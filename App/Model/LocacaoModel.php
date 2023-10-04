@@ -3,8 +3,6 @@
 namespace App\Model;
 
 use App\DAO\LocacaoDAO;
-use App\DAO\ClienteDAO;
-use App\DAO\QuartoDAO;
 
 class LocacaoModel extends Model
 {
@@ -16,21 +14,19 @@ class LocacaoModel extends Model
     {
         $dao = new LocacaoDAO();
 
-            $dao->insert($this);
-       
+        $dao->insert($this);
     }
-
 
     public function getAllClients()
     {
-        $dao = new ClienteDAO();
+        $dao = new LocacaoDAO();
 
         $this->rows = $dao->selectClientes();
     }
 
     public function getAllQuartos()
     {
-        $dao = new QuartoDAO();
+        $dao = new LocacaoDAO();
 
         $this->rows = $dao->selectQuartos();
     }
@@ -38,9 +34,8 @@ class LocacaoModel extends Model
     public function getAllRows()
     {
         $dao = new LocacaoDAO();
-
         $this->rows = $dao->select();
-        
+
     }
 
     public function getById(int $locacao_id)
