@@ -1,22 +1,19 @@
 {
-    "name": "vitor/hotel",
+    "require": {
+        "smarty/smarty": "^4.3"
+    },
     "autoload": {
         "psr-4": {
-            "app\\": "app"
+            "App\\": "App"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "tests\\":"tests/"
-        }
-    },
+    "files": [
+        "helpers/constants.php"
+    ],
     "authors": [
         {
             "name": "vitorpontesdeoliveira",
             "email": "vitor.pontes@plantae.agr.br"
         }
-    ],
-    "require": {
-        "phptailors/phpunit-common": "^0.1.2"
-    }
+    ]
 }

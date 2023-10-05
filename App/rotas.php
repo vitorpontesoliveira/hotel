@@ -7,59 +7,51 @@ use App\Controller\QuartoController;
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($url) {
-    case '/':
-        echo "pagina inicial";
-    break;
-
     case '/cliente':
         ClienteController::index();
-    break;
+        break;
 
     case '/cliente/form':
         ClienteController::form();
-    break;
+        break;
 
     case '/cliente/form/save';
         ClienteController::save();
-    break;
+        break;
 
     case '/cliente/delete';
         ClienteController::delete();
-    break;
+        break;
 
     case '/quarto':
         QuartoController::index();
-    break;
+        break;
 
     case '/quarto/form':
         QuartoController::form();
-    break;
+        break;
 
     case '/quarto/form/save':
         QuartoController::save();
-    break;
+        break;
 
     case '/quarto/delete':
         QuartoController::delete();
-    break;
+        break;
 
     case '/locacao':
         LocacaoController::index();
-    break;
+        break;
 
     case '/locacao/form':
         LocacaoController::form();
-    break;
+        break;
 
     case '/locacao/form/save':
         LocacaoController::save();
-    break;
+        break;
 
     case '/locacao/delete':
         LocacaoController::delete();
-    break;
-
-    default:
-        echo "erro";
         break;
 }
