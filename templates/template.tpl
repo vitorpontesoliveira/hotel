@@ -32,7 +32,7 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
                         aria-expanded="false">Clientes</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="formCliente.php">Cadastrar</a></li>
+                        <li><a class="dropdown-item" href="formCliente">Cadastrar</a></li>
                         <li><a class="dropdown-item" href="#">Listar</a></li>
 
                     </ul>
@@ -40,14 +40,8 @@
         </div>
     </nav>
     <div class="container mt-5">
-        {block name=cadastroQuarto}{/block}
-        {block name=cadastroCliente}{/block}
-        {block name=cadastroLocacao}{/block}    
+        {block name=main}{/block}   
     </div>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">

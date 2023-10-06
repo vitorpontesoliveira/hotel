@@ -1,8 +1,7 @@
-{extends file="template.tpl"}
-{block name=cadastroCliente}
+{block name=main}
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Cadastros de Cliente</h2>
-        <form action="/cliente/form/save" method="post">
+        <form action="save" method="post">
             <input type="hidden"  name="cliente_id">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>

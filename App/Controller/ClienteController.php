@@ -7,7 +7,6 @@
 // Ou até chamar outra controller.
 
 namespace App\Controller;
-
 use App\Model\ClienteModel;
 
 class ClienteController extends Controller
@@ -33,9 +32,9 @@ class ClienteController extends Controller
         if (isset($_GET['cliente_id']))
             // Se foi passado, obtém os dados do cliente correspondente ao ID.
             $model = $model->getById((int) $_GET['cliente_id']);
-
+           
         // Inclui o arquivo que contém o formulário de cliente para exibição.
-        parent::render('Cliente/FormCliente', $model);
+        parent::render('Cliente/formCliente', $model);
     }
 
     //Método save, preenche um model com os dados do formulario e manda para o banco de dados.

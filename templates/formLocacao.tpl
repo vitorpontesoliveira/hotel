@@ -1,4 +1,3 @@
-{extends file="template.tpl"}
 {block name=cadastroLocacao}
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Nova locação</h2>
@@ -8,11 +7,11 @@
                 <label for="cliente_id" class="form-label">Nome do Cliente</label>
                 <select class="form-select" id="cliente_id" name="cliente_id" required>
                     <option value="" disabled selected>Escolha um cliente</option>
-                    <?php foreach ($model->rows as $item) : ?>
-                    <option value="<?= $item->cliente_id ?>">
-                        <?= $item->nome ?>
+                    {foreach ($model->rows as $item) : }
+                    <option value="{$item->cliente_id}">
+                        {= $item->nome }
                     </option>
-                    <?php endforeach; ?>
+                    {/foreach}
                 </select>
             </div>
 
