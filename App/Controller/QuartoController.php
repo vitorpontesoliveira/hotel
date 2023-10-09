@@ -22,8 +22,8 @@ class QuartoController extends Controller
         if (isset($_GET['quarto_id']))
 
             $model = $model->getById((int) $_GET['quarto_id']);
-
-        include 'View/Modules/Quarto/FormQuarto.php';
+            
+        parent::render('Quarto/formQuarto', $model);
     }
 
 
@@ -34,6 +34,7 @@ class QuartoController extends Controller
         $model->ocupado = ($_POST['ocupado'] === 'Sim') ? 1 : 0;
         $model->numero = $_POST['numero'];
         $model->valor = $_POST['valor'];
+        echo($model->ocupado);
 
         $model->save();
 

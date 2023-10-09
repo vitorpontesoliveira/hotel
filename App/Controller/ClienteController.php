@@ -17,7 +17,7 @@ class ClienteController extends Controller
         $model = new ClienteModel();
         // Obtém todos os registros e manda para a propriedade $row.
         $model->getAllRows();
-
+        
         // Inclui o arquivo View de listagem
         parent::render('Cliente/ListaCliente', $model);
     }
@@ -51,7 +51,7 @@ class ClienteController extends Controller
         $model->save();
 
         // Após executar o save, redireciona o usuário para a listagem.
-        header("Location: /Cliente");
+        header("Location: /cliente");
     }
 
     // Método delete para excluir registros.

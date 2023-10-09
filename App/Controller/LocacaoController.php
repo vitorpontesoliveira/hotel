@@ -27,8 +27,7 @@ class LocacaoController extends Controller
             $model = $model->getById($locacao_id);
         }
 
-        parent::render('Locacao/FormLocacao', $model, $model2);
-
+        parent::render('Locacao/formLocacao', $model, $model2);
     }
 
     public static function save()

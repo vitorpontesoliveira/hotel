@@ -5,8 +5,6 @@ use App\Controller\ClienteController;
 use App\Controller\LocacaoController;
 use App\Controller\QuartoController;
 
-$smarty->display('template.tpl');
-
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($url) {
@@ -18,7 +16,7 @@ switch ($url) {
         ClienteController::form();
         break;
         
-    case '/save';
+    case '/formCliente/save';
         ClienteController::save();
         break;
 
@@ -30,11 +28,11 @@ switch ($url) {
         QuartoController::index();
         break;
 
-    case '/quarto/form':
+    case '/formQuarto':
         QuartoController::form();
         break;
 
-    case '/quarto/form/save':
+    case '/formQuarto/save':
         QuartoController::save();
         break;
 
@@ -46,11 +44,11 @@ switch ($url) {
         LocacaoController::index();
         break;
 
-    case '/locacao/form':
+    case '/formLocacao':
         LocacaoController::form();
         break;
 
-    case '/locacao/form/save':
+    case '/formLocacao/save':
         LocacaoController::save();
         break;
 

@@ -22,10 +22,10 @@
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
                         aria-expanded="false">Quartos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="formQuarto.php">Cadastrar</a></li>
-                        <li><a class="dropdown-item" href="formLocacao.php">Reservar</a></li>
-                        <li><a class="dropdown-item" href="#">Listar quartos</a></li>
-                        <li><a class="dropdown-item" href="#">Listar reservas</a></li>
+                        <li><a class="dropdown-item" href="formQuarto">Cadastrar</a></li>
+                        <li><a class="dropdown-item" href="formLocacao">Reservar</a></li>
+                        <li><a class="dropdown-item" href="quarto">Listar quartos</a></li>
+                        <li><a class="dropdown-item" href="locacao">Listar reservas</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -33,7 +33,7 @@
                         aria-expanded="false">Clientes</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="formCliente">Cadastrar</a></li>
-                        <li><a class="dropdown-item" href="#">Listar</a></li>
+                        <li><a class="dropdown-item" href="cliente">Listar</a></li>
 
                     </ul>
                 </li>

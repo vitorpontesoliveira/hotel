@@ -94,7 +94,7 @@ class LocacaoDAO extends DAO
 
     public function selectQuartos()
     {
-        $sql = "SELECT * FROM quartos";
+        $sql = "SELECT quarto_id, numero FROM quartos";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
