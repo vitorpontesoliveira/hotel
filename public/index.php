@@ -8,6 +8,11 @@ use App\Controller\QuartoController;
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($url) {
+
+    case '/home':
+        echo 'pagina inicial';
+    break;
+
     case '/cliente':
         ClienteController::index();
         break;

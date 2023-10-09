@@ -34,7 +34,6 @@ class QuartoController extends Controller
         $model->ocupado = ($_POST['ocupado'] === 'Sim') ? 1 : 0;
         $model->numero = $_POST['numero'];
         $model->valor = $_POST['valor'];
-        echo($model->ocupado);
 
         $model->save();
 

@@ -40,7 +40,7 @@ class LocacaoController extends Controller
 
         $model->save();
 
-        // header("Location: /locacao");
+        header("Location: /locacao");
     }
 
     public static function delete()
