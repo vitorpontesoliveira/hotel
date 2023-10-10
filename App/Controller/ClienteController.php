@@ -12,18 +12,18 @@ use App\Model\ClienteModel;
 class ClienteController extends Controller
 {
     // Método index é usado para devolver a View de listagem.
-    public static function index()
+    public function index()
     {
         $model = new ClienteModel();
         // Obtém todos os registros e manda para a propriedade $row.
         $model->getAllRows();
         
         // Inclui o arquivo View de listagem
-        parent::render('Cliente/ListaCliente', $model);
+        $this->render('listaCliente', $model);
     }
 
     // Método form devolve um formulário para ser preenchido.
-    public static function form()
+    public function form()
     {
         // Cria uma instância do modelo ClienteModel.
         $model = new ClienteModel();
@@ -34,11 +34,11 @@ class ClienteController extends Controller
             $model = $model->getById((int) $_GET['cliente_id']);
            
         // Inclui o arquivo que contém o formulário de cliente para exibição.
-        parent::render('Cliente/formCliente', $model);
+        $this->render('formCliente', $model);
     }
 
     //Método save, preenche um model com os dados do formulario e manda para o banco de dados.
-    public static function save()
+    public function save()
     {
         // Captura os dados preenchidos nos campos via POST.
         $model = new ClienteModel();
@@ -55,7 +55,7 @@ class ClienteController extends Controller
     }
 
     // Método delete para excluir registros.
-    public static function delete()
+    public function delete()
     {
 
         $model = new ClienteModel();

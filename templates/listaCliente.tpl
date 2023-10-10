@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            {foreach $model->rows as $item}
+            {foreach $model1->rows as $item}
                 <tr>
                     <td>{$item->cliente_id}</td>
                     <td>{$item->nome}</td>

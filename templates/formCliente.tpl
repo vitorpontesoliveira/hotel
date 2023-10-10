@@ -3,21 +3,21 @@
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Cadastros de Cliente</h2>
         <form action="formCliente/save" method="post">
-            <input type="hidden" value="{$model->cliente_id}" name="cliente_id">
+            <input type="hidden" value="{$model1->cliente_id}" name="cliente_id">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome:</label>
-                <input type="text" value="{$model->nome}" class="form-control" name="nome" id="nome"
+                <input type="text" value="{$model1->nome}" class="form-control" name="nome" id="nome"
                     placeholder="Nome completo" required>
                 <span id="nomeErro" style="color: red;"></span>
             </div>
             <div class="mb-3">
                 <label for="telefone" class="form-label">Telefone:</label>
-                <input type="tel" value="{$model->telefone}"class="form-control" name="telefone" id="telefone"
+                <input type="tel" value="{$model1->telefone}"class="form-control" name="telefone" id="telefone"
                     placeholder="(DDD)_____-____">
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail:</label>
-                <input type="email" value="{$model->email}" class="form-control" name="email" id="email"
+                <input type="email" value="{$model1->email}" class="form-control" name="email" id="email"
                     placeholder="example@hotmail.com" required>
             </div>
             <div class="text-center">

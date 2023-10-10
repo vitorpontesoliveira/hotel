@@ -3,12 +3,12 @@
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Nova locação</h2>
         <form action="formLocacao/save" method="post">
-            <input type="hidden" value="{$model->locacao_id}" name="locacao_id">
+            <input type="hidden" value="{$model1->locacao_id}" name="locacao_id">
             <div class="mb-3">
                 <label for="cliente_id" class="form-label">Nome do Cliente</label>
                 <select class="form-select" id="cliente_id" name="cliente_id" required>
                     <option value="" disabled selected>Escolha um cliente</option>
-                    {foreach $model->rows as $item}
+                    {foreach $model1->rows as $item}
                     <option value="{$item->cliente_id}">
                         {$item->nome }
                     </option>

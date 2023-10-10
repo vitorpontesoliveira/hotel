@@ -7,30 +7,30 @@ use App\Model\LocacaoModel;
 
 class LocacaoController extends Controller
 {
-    public static function index()
+    public function index()
     {
         $model = new LocacaoModel();
         $model->getAllRows();
 
-        parent::render('Locacao/ListaLocacao', $model);
+        $this->render('listaLocacao', $model);
     }
 
-    public static function form()
+    public function form()
     {
-        $model = new LocacaoModel();
-        $model->getAllClients();
+        $model1 = new LocacaoModel();
+        $model1->getAllClients();
         $model2 = new LocacaoModel();
         $model2->getAllQuartos();
 
         if (isset($_GET['locacao_id'])) {
             $locacao_id = (int)$_GET['locacao_id'];
-            $model = $model->getById($locacao_id);
+            $model1 = $model1->getById($locacao_id);
         }
 
-        parent::render('Locacao/formLocacao', $model, $model2);
+        $this->render('formLocacao', $model1, $model2);
     }
 
-    public static function save()
+    public function save()
     {
         $model = new LocacaoModel();
         $model->locacao_id = $_POST['locacao_id'];
@@ -43,7 +43,7 @@ class LocacaoController extends Controller
         header("Location: /locacao");
     }
 
-    public static function delete()
+    public function delete()
     {
         $model = new LocacaoModel();
 

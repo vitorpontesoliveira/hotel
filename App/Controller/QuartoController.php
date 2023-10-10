@@ -6,28 +6,26 @@ use App\Model\QuartoModel;
 
 class QuartoController extends Controller
 {
-    public static function index()
+    public function index()
     {
         $model = new QuartoModel();
         $model->getAllRows();
 
-        parent::render('Quarto/ListaQuarto', $model);
+        $this->render('listaQuarto', $model);
     }
 
-    public static function form()
+    public function form()
     {
-
         $model = new QuartoModel();
 
-        if (isset($_GET['quarto_id']))
+        if (isset($_GET['quarto_id'])) {
+            $model = $model->getById((int)$_GET['quarto_id']);
+        }
 
-            $model = $model->getById((int) $_GET['quarto_id']);
-            
-        parent::render('Quarto/formQuarto', $model);
+        $this->render('formQuarto', $model);
     }
 
-
-    public static function save()
+    public function save()
     {
         $model = new QuartoModel();
         $model->quarto_id = $_POST['quarto_id'];
@@ -40,9 +38,8 @@ class QuartoController extends Controller
         header("Location: /quarto");
     }
 
-    public static function delete()
+    public function delete()
     {
-
         $model = new QuartoModel();
 
         $model->delete((int)$_GET['quarto_id']);

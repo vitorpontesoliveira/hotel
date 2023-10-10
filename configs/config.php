@@ -7,15 +7,8 @@ if (!defined('BASEDIR')) {
 }
 
 if (!defined('VIEWS')) {
-    define('VIEWS', dirname(__FILE__) . '/../App/View/Modules/');
+    define('VIEWS', dirname(__FILE__) . '/../templates/');
 }
-
-$smarty = new Smarty();
-
-$smarty->setTemplateDir('../templates/');
-$smarty->setCompileDir('../templates_c/');
-$smarty->setCacheDir('../cache/');
-$smarty->setConfigDir('../configs/');
 
 $_ENV['db']['host'] = 'localhost';
 $_ENV['db']['user'] = 'postgres';

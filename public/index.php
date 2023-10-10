@@ -11,53 +11,65 @@ switch ($url) {
 
     case '/home':
         echo 'pagina inicial';
-    break;
+        break;
 
     case '/cliente':
-        ClienteController::index();
+        $clienteController = new ClienteController();
+        $clienteController->index();
         break;
 
     case '/formCliente':
-        ClienteController::form();
+        $clienteController = new ClienteController();
+        $clienteController->form();
         break;
-        
+
     case '/formCliente/save';
-        ClienteController::save();
+        $clienteController = new ClienteController();
+        $clienteController->save();
         break;
 
     case '/cliente/delete';
-        ClienteController::delete();
+        $clienteController = new ClienteController();
+        $clienteController->delete();
         break;
 
     case '/quarto':
-        QuartoController::index();
+        $quartoController = new QuartoController();
+        $quartoController->index();
         break;
 
     case '/formQuarto':
-        QuartoController::form();
+        $quartoController = new QuartoController();
+        $quartoController->form();
         break;
 
     case '/formQuarto/save':
-        QuartoController::save();
+        $quartoController = new QuartoController();
+        $quartoController->save();
         break;
 
     case '/quarto/delete':
-        QuartoController::delete();
+        $quartoController = new QuartoController();
+        $quartoController->delete();
         break;
 
     case '/locacao':
-        LocacaoController::index();
+        $locacaoController = new LocacaoController();
+        $locacaoController->index();
         break;
 
     case '/formLocacao':
-        LocacaoController::form();
+        $locacaoController = new LocacaoController();
+        $locacaoController->form();
         break;
 
     case '/formLocacao/save':
-        LocacaoController::save();
+        $locacaoController = new LocacaoController();
+        $locacaoController->save();
         break;
 
     case '/locacao/delete':
-        LocacaoController::delete();
+        $locacaoController = new LocacaoController();
+        $locacaoController->delete();
         break;
 }

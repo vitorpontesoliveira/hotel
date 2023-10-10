@@ -19,7 +19,7 @@
 
         <tbody>
 
-            {foreach $model->rows as $item}
+            {foreach $model1->rows as $item}
 
                 <tr>
                     <td>
