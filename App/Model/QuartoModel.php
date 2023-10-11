@@ -7,13 +7,13 @@ use App\DAO\QuartoDAO;
 class QuartoModel extends Model
 {
 
-    public $quarto_id, $numero, $ocupado, $valor;
+    public $quartoID, $numero, $ocupado, $valor;
 
     public function save()
     {
         $dao = new QuartoDAO();
 
-        if (empty($this->quarto_id)) 
+        if (empty($this->quartoID)) 
         {
             $dao->insert($this);
         }
@@ -23,7 +23,7 @@ class QuartoModel extends Model
        
     }
 
-    public function getAllRows()
+    public function getAllRooms()
     {
         $dao = new QuartoDAO();
 

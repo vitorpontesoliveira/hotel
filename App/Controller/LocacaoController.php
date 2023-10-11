@@ -3,38 +3,43 @@
 namespace App\Controller;
 
 use App\Model\LocacaoModel;
+use App\Model\ClienteModel;
+use App\Model\QuartoModel;
 
 
 class LocacaoController extends Controller
 {
     public function index()
     {
-        $model = new LocacaoModel();
-        $model->getAllRows();
+        $data = new LocacaoModel();
+        $data->getAllRows();
 
-        $this->render('listaLocacao', $model);
+        $this->render('listaLocacao', $data);
     }
 
     public function form()
     {
-        $model1 = new LocacaoModel();
-        $model1->getAllClients();
-        $model2 = new LocacaoModel();
-        $model2->getAllQuartos();
+        $data = new LocacaoModel();
+        $dataC = new ClienteModel();
+        $dataQ = new QuartoModel();
+
+        $dataC->getAllClients();
+        $dataQ->getAllRooms();
 
         if (isset($_GET['locacao_id'])) {
             $locacao_id = (int)$_GET['locacao_id'];
-            $model1 = $model1->getById($locacao_id);
+            $data = $data->getById($locacao_id);
         }
 
-        $this->render('formLocacao', $model1, $model2);
+        $this->render('formLocacao', ['data' => $data, 'dataC' => $dataC, 'dataQ' => $dataQ]);
     }
+
 
     public function save()
     {
         $model = new LocacaoModel();
         $model->locacao_id = $_POST['locacao_id'];
-        $model->cliente_id = $_POST['cliente_id'];
+        $model->clienteId = $_POST['clienteId'];
         $model->quarto_id = $_POST['quarto_id'];
         $model->data = $_POST['data_locacao'];
 

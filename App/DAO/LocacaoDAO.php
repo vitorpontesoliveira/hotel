@@ -51,7 +51,7 @@ class LocacaoDAO extends DAO
         $sql_insert = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES (:cliente_id, :quarto_id, :data)";
         $stmt_insert = $this->pdo->prepare($sql_insert);
 
-        $stmt_insert->bindValue(':cliente_id', $model->cliente_id);
+        $stmt_insert->bindValue(':cliente_id', $model->clienteId);
         $stmt_insert->bindValue(':quarto_id', $model->quarto_id);
         $stmt_insert->bindValue(':data', $model->data);
 
@@ -76,7 +76,7 @@ class LocacaoDAO extends DAO
         // Prepara a consulta SQL atráves do objeto PDO.
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':cliente_id', $model->cliente_id);
+        $stmt->bindValue(':clienteId', $model->clienteId);
         $stmt->bindValue(':quarto_id', $model->quarto_id);
         $stmt->bindValue(':data', $model->data);
         return $stmt->execute();

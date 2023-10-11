@@ -3,15 +3,14 @@
     <div class="border p-4 mx-auto bg-white" style="max-width: 400px;">
         <h2 class="text-center">Nova locação</h2>
         <form action="formLocacao/save" method="post">
-            <input type="hidden" value="{$model1->locacao_id}" name="locacao_id">
             <div class="mb-3">
                 <label for="cliente_id" class="form-label">Nome do Cliente</label>
                 <select class="form-select" id="cliente_id" name="cliente_id" required>
                     <option value="" disabled selected>Escolha um cliente</option>
-                    {foreach $model1->rows as $item}
-                    <option value="{$item->cliente_id}">
-                        {$item->nome }
-                    </option>
+                    {foreach $dataC->rows as $cliente}
+                        <option value="{$cliente->cliente_id}">
+                            {$cliente->nome}
+                        </option>
                     {/foreach}
                 </select>
             </div>
@@ -20,10 +19,10 @@
                 <label for="quarto_id" class="form-label">Número do quarto</label>
                 <select class="form-select" id="quarto_id" name="quarto_id" required>
                     <option value="" disabled selected>Escolha um quarto</option>
-                    {foreach $model2->rows as $item}
-                    <option value="{$item->quarto_id}">
-                        {$item->numero}
-                    </option>
+                    {foreach $dataQ->rows as $quarto}
+                        <option value="{$quarto->quarto_id}">
+                            {$quarto->numero}
+                        </option>
                     {/foreach}
                 </select>
             </div>

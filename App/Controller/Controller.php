@@ -27,9 +27,12 @@ abstract class Controller
         $arquivo_view = VIEWS . $view . ".tpl";
 
         if (file_exists($arquivo_view)) {
-            foreach ($models as $key => $model) {
-                $this->smarty->assign('model' . ($key + 1), $model);
+            foreach ($models as $data) {
+                foreach ($data as $prop => $value) {
+                    $this->smarty->assign($prop, $value);
+                }
             }
+
             $this->smarty->display($arquivo_view);
         } else {
             exit('Arquivo da View não existe. Arquivo: ' . $view);

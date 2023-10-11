@@ -13,28 +13,28 @@ class QuartoDAO extends DAO
         parent::__construct();
     }
 
-    public function insert(QuartoModel $model)
+    public function insert(QuartoModel $data)
     {
 
         $sql = "INSERT INTO quartos (numero, ocupado, valor) VALUES (:numero, :ocupado, :valor)";
 
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':numero', $model->numero);
-        $stmt->bindValue(':ocupado', $model->ocupado);
-        $stmt->bindValue(':valor', $model->valor);
+        $stmt->bindValue(':numero', $data->numero);
+        $stmt->bindValue(':ocupado', $data->ocupado);
+        $stmt->bindValue(':valor', $data->valor);
         return $stmt->execute();
     }
 
-    public function update(QuartoModel $model)
+    public function update(QuartoModel $data)
     {
         $sql = "UPDATE quartos SET ocupado = :ocupado, numero = :numero, valor = :valor WHERE quarto_id = :quarto_id";
         $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindValue(':ocupado', $model->ocupado);
-        $stmt->bindValue(':numero', $model->numero);
-        $stmt->bindValue(':valor', $model->valor);
-        $stmt->bindValue(':quarto_id', $model->quarto_id);
+        $stmt->bindValue(':ocupado', $data->ocupado);
+        $stmt->bindValue(':numero', $data->numero);
+        $stmt->bindValue(':valor', $data->valor);
+        $stmt->bindValue(':quarto_id', $data->quartoID);
     
         return $stmt->execute();
     }

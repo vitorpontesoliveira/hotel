@@ -7,7 +7,7 @@ use App\DAO\LocacaoDAO;
 class LocacaoModel extends Model
 {
 
-    public $locacao_id, $quarto_id, $cliente_id, $data;
+    public $locacao_id, $quarto_id, $clienteId, $data;
 
 
     public function save()

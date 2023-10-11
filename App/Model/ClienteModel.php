@@ -12,7 +12,7 @@ class ClienteModel extends Model
 {
 
     // Declaração das propriedades conforme a tabela existente no banco de dados.
-    public $cliente_id, $nome, $telefone, $email;
+    public $clienteId, $nome, $telefone, $email;
 
     // Declaração do metódo save que vai chamar a DAO para gravar os dados no banco.
     public function save()
@@ -20,7 +20,7 @@ class ClienteModel extends Model
         $dao = new ClienteDAO();
 
         // Verificação se a propriedade de ID foi preenchida.
-        if (empty($this->cliente_id)) {
+        if (empty($this->clienteId)) {
             // Se não houver ID, chama o método insert.
             $dao->insert($this);
         } else {
@@ -30,7 +30,7 @@ class ClienteModel extends Model
     }
 
     // Método que encapsula a chamada DAO e preenche as proprieades $rows
-    public function getAllRows()
+    public function getAllClients()
     {
         $dao = new ClienteDAO();
 
@@ -41,12 +41,12 @@ class ClienteModel extends Model
 
     // Método que encapsula o acesso ao método selectById da camada DAO
     // O método recebe um parâmetro do tipo inteiro que é o id do registro, via camada DAO.
-    public function getById(int $cliente_id)
+    public function getById(int $clienteId)
     {
         $dao = new ClienteDAO();
 
         // obtém um model preenchido da camada DAO.
-        $obj = $dao->selectByID($cliente_id);
+        $obj = $dao->selectByID($clienteId);
 
         // Verifica se foi preenchido, se não retorna um novo.
         return ($obj) ? $obj : new ClienteModel();
@@ -54,10 +54,10 @@ class ClienteModel extends Model
 
     // Método que encapsula o acesso DAO do método delete.
     // O método recebe um valor inteiro que é o id do cliente.
-    public function delete(int $cliente_id)
+    public function delete(int $clienteId)
     {
         $dao = new ClienteDAO();
 
-        $dao->delete($cliente_id);
+        $dao->delete($clienteId);
     }
 }

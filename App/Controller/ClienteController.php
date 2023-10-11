@@ -14,27 +14,27 @@ class ClienteController extends Controller
     // Método index é usado para devolver a View de listagem.
     public function index()
     {
-        $model = new ClienteModel();
+        $data = new ClienteModel();
         // Obtém todos os registros e manda para a propriedade $row.
-        $model->getAllRows();
+        $data->getAllClients();
         
         // Inclui o arquivo View de listagem
-        $this->render('listaCliente', $model);
+        $this->render('listaCliente', ['data' => $data]);
     }
 
     // Método form devolve um formulário para ser preenchido.
     public function form()
     {
         // Cria uma instância do modelo ClienteModel.
-        $model = new ClienteModel();
+        $data = new ClienteModel();
 
         // Verifica se foi passado um parâmetro 'cliente_id' na URL.
-        if (isset($_GET['cliente_id']))
+        if (isset($_GET['clienteId']))
             // Se foi passado, obtém os dados do cliente correspondente ao ID.
-            $model = $model->getById((int) $_GET['cliente_id']);
+            $data = $data->getById((int) $_GET['clienteId']);
            
         // Inclui o arquivo que contém o formulário de cliente para exibição.
-        $this->render('formCliente', $model);
+        $this->render('formCliente',['data' => $data]);
     }
 
     //Método save, preenche um model com os dados do formulario e manda para o banco de dados.
@@ -42,7 +42,7 @@ class ClienteController extends Controller
     {
         // Captura os dados preenchidos nos campos via POST.
         $model = new ClienteModel();
-        $model->cliente_id = $_POST['cliente_id'];
+        $model->clienteId = $_POST['clienteId'];
         $model->nome = $_POST['nome'];
         $model->telefone = $_POST['telefone'];
         $model->email = $_POST['email'];
@@ -61,7 +61,7 @@ class ClienteController extends Controller
         $model = new ClienteModel();
 
         // Busca o id do cadastro via GET.
-        $model->delete((int)$_GET['cliente_id']);
+        $model->delete((int)$_GET['clienteId']);
 
         // Após deletar, redicireciona para a listagem.
         header("Location: /cliente");

@@ -42,7 +42,7 @@ class ClienteDAO extends DAO
     public function update(ClienteModel $model)
     {
         // Atualiza as colunas da tabela cliente de acordo com o cliente_id recebido. 
-        $sql = "UPDATE clientes SET nome = :nome, telefone = :telefone, email = :email WHERE cliente_id = :cliente_id";
+        $sql = "UPDATE clientes SET nome = :nome, telefone = :telefone, email = :email WHERE cliente_id = :clienteId";
 
         // Prepara a consulta SQL atráves do objeto PDO.
         $stmt = $this->pdo->prepare($sql);
@@ -51,7 +51,7 @@ class ClienteDAO extends DAO
         $stmt->bindValue(':nome', $model->nome);
         $stmt->bindValue(':telefone', $model->telefone);
         $stmt->bindValue(':email', $model->email);
-        $stmt->bindValue(':cliente_id', $model->cliente_id);
+        $stmt->bindValue(':clienteId', $model->clienteId);
 
         // Executa a consulta preparada e retorna o resultado da operação.
         return $stmt->execute();
@@ -73,24 +73,24 @@ class ClienteDAO extends DAO
     }
 
     // Método utilizado para retornar um registro específico da tabela.
-    public function selectByID(int $cliente_id)
+    public function selectByID(int $clienteId)
     {
-        $sql = "SELECT * FROM clientes WHERE cliente_id = :cliente_id";
+        $sql = "SELECT * FROM clientes WHERE cliente_id = :clienteId";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':cliente_id', $cliente_id);
+        $stmt->bindValue(':clienteId', $clienteId);
         $stmt->execute();
 
         return $stmt->fetchObject("App\Model\ClienteModel");
     }
 
     // Método utilizado para remover um registro da tabela.
-    public function delete(int $cliente_id)
+    public function delete(int $clienteId)
     {
-        $sql = "DELETE FROM clientes WHERE cliente_id = :cliente_id";
+        $sql = "DELETE FROM clientes WHERE cliente_id = :clienteId";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':cliente_id', $cliente_id);
+        $stmt->bindValue(':clienteId', $clienteId);
 
         $stmt->execute();
     }
