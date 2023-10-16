@@ -8,42 +8,42 @@ class QuartoController extends Controller
 {
     public function index()
     {
-        $data = new QuartoModel();
-        $data->getAllRooms();
+        $params = new QuartoModel();
+        $params->getAllRooms();
 
-        $this->render('listaQuarto', ['data' => $data]);
+        $this->render('listaQuarto', ['params' => $params]);
     }
 
     public function form()
     {
-        $data = new QuartoModel();
+        $params = new QuartoModel();
 
-        if (isset($_GET['quarto_id'])) {
-            $data = $data->getById((int)$_GET['quarto_id']);
+        if (isset($_GET['quartoId'])) {
+            $params = $params->getById((int)$_GET['quartoId']);
         }
 
-        $this->render('formQuarto', ['data' => $data]);
+        $this->render('formQuarto', ['params' => $params]);
     }
 
 
     public function save()
     {
-        $data = new QuartoModel();
-        $data->quartoID = $_POST['quarto_id'];
-        $data->ocupado = ($_POST['ocupado'] === 'Sim') ? 1 : 0;
-        $data->numero = $_POST['numero'];
-        $data->valor = $_POST['valor'];
+        $params = new QuartoModel();
+        $params->quartoID = $_POST['quartoId'];
+        $params->ocupado = ($_POST['ocupado'] === 'Sim') ? 1 : 0;
+        $params->numero = $_POST['numero'];
+        $params->valor = $_POST['valor'];
 
-        $data->save();
+        $params->save();
 
         header("Location: /quarto");
     }
 
     public function delete()
     {
-        $data = new QuartoModel();
+        $params = new QuartoModel();
 
-        $data->delete((int)$_GET['quarto_id']);
+        $params->delete((int)$_GET['quartoId']);
 
         header("Location: /quarto");
     }

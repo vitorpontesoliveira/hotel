@@ -7,7 +7,7 @@ use App\DAO\LocacaoDAO;
 class LocacaoModel extends Model
 {
 
-    public $locacao_id, $quarto_id, $clienteId, $data;
+    public $locacaoId, $quartoId, $clienteId, $data;
 
 
     public function save()
@@ -38,19 +38,19 @@ class LocacaoModel extends Model
 
     }
 
-    public function getById(int $locacao_id)
+    public function getById(int $locacaoId)
     {
         $dao = new LocacaoDAO();
 
-        $obj = $dao->selectByID($locacao_id);
+        $obj = $dao->selectByID($locacaoId);
 
         return ($obj) ? $obj : new LocacaoModel();
     }
 
-    public function delete(int $locacao_id)
+    public function delete(int $locacaoId)
     {
         $dao = new LocacaoDAO();
 
-        $dao->delete($locacao_id);
+        $dao->delete($locacaoId);
     }
 }

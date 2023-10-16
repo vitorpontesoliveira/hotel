@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            {foreach $data->rows as $item}
+            {foreach $params->rows as $item}
                 <tr>
                     <td>{$item->cliente_id}</td>
                     <td>{$item->nome}</td>

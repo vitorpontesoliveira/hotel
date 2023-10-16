@@ -18,7 +18,7 @@
         </thead>
 
         <tbody>
-            {foreach $data->rows as $item}
+            {foreach $params->rows as $item}
                 <tr>
                     <td>{$item->quarto_id}</td>
                     <td>{if $item->ocupado == 1}Sim{else}Não{/if}</td>

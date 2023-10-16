@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            {foreach $rows as $item}
+            {foreach $params->rows as $item}
 
                 <tr>
                     <td>

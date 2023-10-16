@@ -14,24 +14,12 @@ class LocacaoDAO extends DAO
         parent::__construct();
     }
 
-    // public function insert(LocacaoModel $model)
-    // {
-    //     $sql = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES ( :cliente_id, :quarto_id, :data)";
-
-    //     $stmt = $this->pdo->prepare($sql);
-
-    //     $stmt->bindValue(':cliente_id', $model->cliente_id);
-    //     $stmt->bindValue(':quarto_id', $model->quarto_id);
-    //     $stmt->bindValue(':data', $model->data);
-    //     return $stmt->execute();
-    // }
-
     public function insert(LocacaoModel $model)
     {
         // Verificar se já existe uma reserva para o mesmo quarto na mesma data
-        $sql_check = "SELECT COUNT(*) FROM locacoes WHERE quarto_id = :quarto_id AND data = :data_locacao";
+        $sql_check = "SELECT COUNT(*) FROM locacoes WHERE quarto_id = :quartoId AND data = :data_locacao";
         $stmt_check = $this->pdo->prepare($sql_check);
-        $stmt_check->bindParam(':quarto_id', $model->quarto_id);
+        $stmt_check->bindParam(':quartoId', $model->quartoId);
         $stmt_check->bindParam(':data_locacao', $model->data);
         $stmt_check->execute();
         $num_reservas = $stmt_check->fetchColumn();
@@ -48,11 +36,11 @@ class LocacaoDAO extends DAO
         }
 
         // Se não houver reservas existentes, proceda com a inserção
-        $sql_insert = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES (:cliente_id, :quarto_id, :data)";
+        $sql_insert = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES (:cliente_id, :quartoId, :data)";
         $stmt_insert = $this->pdo->prepare($sql_insert);
 
         $stmt_insert->bindValue(':cliente_id', $model->clienteId);
-        $stmt_insert->bindValue(':quarto_id', $model->quarto_id);
+        $stmt_insert->bindValue(':quartoId', $model->quartoId);
         $stmt_insert->bindValue(':data', $model->data);
 
         if ($stmt_insert->execute()) {
@@ -71,13 +59,13 @@ class LocacaoDAO extends DAO
     public function update(LocacaoModel $model)
     {
         // Atualiza as colunas da tabela cliente de acordo com o cliente_id recebido. 
-        $sql = "UPDATE locacoes SET cliente_id = :cliente_id, quarto_id = :quarto_id, data = :data WHERE locacao_id = :locacao_id";
+        $sql = "UPDATE locacoes SET cliente_id = :cliente_id, quarto_id = :quartoId, data = :data WHERE locacao_id = :locacao_id";
 
         // Prepara a consulta SQL atráves do objeto PDO.
         $stmt = $this->pdo->prepare($sql);
 
         $stmt->bindValue(':clienteId', $model->clienteId);
-        $stmt->bindValue(':quarto_id', $model->quarto_id);
+        $stmt->bindValue(':quartoId', $model->quartoId);
         $stmt->bindValue(':data', $model->data);
         return $stmt->execute();
     }
@@ -115,22 +103,22 @@ class LocacaoDAO extends DAO
         return $stmt->fetchAll(PDO::FETCH_CLASS);
     }
 
-    public function selectByID(int $locacao_id)
+    public function selectByID(int $locacaoId)
     {
-        $sql = "SELECT * FROM locacoes WHERE locacao_id = :locacao_id";
+        $sql = "SELECT * FROM locacoes WHERE locacao_id = :locacaoId";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':locacao_id', $locacao_id);
+        $stmt->bindValue(':locacaoId', $locacaoId);
         $stmt->execute();
 
         return $stmt->fetchObject("App\Model\ClienteModel");
     }
 
-    public function delete(int $locacao_id)
+    public function delete(int $locacaoId)
     {
         $sql = "DELETE FROM locacoes WHERE locacao_id = :locacao_id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':locacao_id', $locacao_id);
+        $stmt->bindValue(':locacaoId', $locacaoId);
         $stmt->execute();
     }
 }

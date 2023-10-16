@@ -6,7 +6,6 @@
 namespace App\Model;
 
 use App\DAO\ClienteDAO;
-use \PDO;
 
 class ClienteModel extends Model
 {

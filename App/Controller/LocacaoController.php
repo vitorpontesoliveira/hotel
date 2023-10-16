@@ -6,41 +6,39 @@ use App\Model\LocacaoModel;
 use App\Model\ClienteModel;
 use App\Model\QuartoModel;
 
-
 class LocacaoController extends Controller
 {
     public function index()
     {
-        $data = new LocacaoModel();
-        $data->getAllRows();
+        $params = new LocacaoModel();
+        $params->getAllRows();
 
-        $this->render('listaLocacao', $data);
+        $this->render('listaLocacao', ['params' => $params]);
     }
 
     public function form()
     {
-        $data = new LocacaoModel();
-        $dataC = new ClienteModel();
-        $dataQ = new QuartoModel();
+        $params = new LocacaoModel();
+        $paramsC = new ClienteModel();
+        $paramsQ = new QuartoModel();
 
-        $dataC->getAllClients();
-        $dataQ->getAllRooms();
+        $paramsC->getAllClients();
+        $paramsQ->getAllRooms();     
 
         if (isset($_GET['locacao_id'])) {
             $locacao_id = (int)$_GET['locacao_id'];
-            $data = $data->getById($locacao_id);
+            $params = $params->getById($locacao_id);
         }
 
-        $this->render('formLocacao', ['data' => $data, 'dataC' => $dataC, 'dataQ' => $dataQ]);
+        $this->render('formLocacao', ['params' => $params, 'paramsC' => $paramsC, 'paramsQ' => $paramsQ]);
     }
-
 
     public function save()
     {
         $model = new LocacaoModel();
-        $model->locacao_id = $_POST['locacao_id'];
+        $model->locacaoId = $_POST['locacao_id'];
         $model->clienteId = $_POST['clienteId'];
-        $model->quarto_id = $_POST['quarto_id'];
+        $model->quartoId = $_POST['quartoId'];
         $model->data = $_POST['data_locacao'];
 
         $model->save();

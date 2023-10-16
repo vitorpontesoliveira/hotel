@@ -22,20 +22,16 @@ abstract class Controller
         $this->smarty->setConfigDir('../configs/');
     }
 
-    protected function render($view, ...$models)
+    protected function render($view, $params)
     {
         $arquivo_view = VIEWS . $view . ".tpl";
 
-        if (file_exists($arquivo_view)) {
-            foreach ($models as $data) {
-                foreach ($data as $prop => $value) {
-                    $this->smarty->assign($prop, $value);
-                }
-            }
-
-            $this->smarty->display($arquivo_view);
-        } else {
+        if (!file_exists($arquivo_view))
             exit('Arquivo da View não existe. Arquivo: ' . $view);
+
+        foreach ($params as $key => $value) {
+            $this->smarty->assign($key, $value);
         }
+        $this->smarty->display($arquivo_view);
     }
 }

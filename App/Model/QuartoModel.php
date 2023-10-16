@@ -31,21 +31,21 @@ class QuartoModel extends Model
         
     }
 
-    public function getById(int $quarto_id)
+    public function getById(int $quartoId)
     {
         $dao = new QuartoDAO();
 
-        $obj = $dao->selectByID($quarto_id);
+        $obj = $dao->selectByID($quartoId);
 
         return ($obj) ? $obj : new QuartoModel();
         
     }
 
-    public function delete(int $quarto_id)
+    public function delete(int $quartoId)
     {
         $dao = new QuartoDAO();
 
-        $dao->delete($quarto_id);
+        $dao->delete($quartoId);
     
     }
     

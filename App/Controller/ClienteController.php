@@ -14,27 +14,27 @@ class ClienteController extends Controller
     // Método index é usado para devolver a View de listagem.
     public function index()
     {
-        $data = new ClienteModel();
+        $params = new ClienteModel();
         // Obtém todos os registros e manda para a propriedade $row.
-        $data->getAllClients();
+        $params->getAllClients();
         
         // Inclui o arquivo View de listagem
-        $this->render('listaCliente', ['data' => $data]);
+        $this->render('listaCliente', ['params' => $params]);
     }
 
     // Método form devolve um formulário para ser preenchido.
     public function form()
     {
         // Cria uma instância do modelo ClienteModel.
-        $data = new ClienteModel();
+        $params = new ClienteModel();
 
         // Verifica se foi passado um parâmetro 'cliente_id' na URL.
         if (isset($_GET['clienteId']))
             // Se foi passado, obtém os dados do cliente correspondente ao ID.
-            $data = $data->getById((int) $_GET['clienteId']);
+            $params = $params->getById((int) $_GET['clienteId']);
            
         // Inclui o arquivo que contém o formulário de cliente para exibição.
-        $this->render('formCliente',['data' => $data]);
+        $this->render('formCliente',['params' => $params]);
     }
 
     //Método save, preenche um model com os dados do formulario e manda para o banco de dados.
