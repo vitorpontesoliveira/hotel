@@ -7,6 +7,7 @@
 // Ou até chamar outra controller.
 
 namespace App\Controller;
+
 use App\Model\ClienteModel;
 
 class ClienteController extends Controller
@@ -17,7 +18,7 @@ class ClienteController extends Controller
         $params = new ClienteModel();
         // Obtém todos os registros e manda para a propriedade $row.
         $params->getAllClients();
-        
+
         // Inclui o arquivo View de listagem
         $this->render('listaCliente', ['params' => $params]);
     }
@@ -32,9 +33,9 @@ class ClienteController extends Controller
         if (isset($_GET['clienteId']))
             // Se foi passado, obtém os dados do cliente correspondente ao ID.
             $params = $params->getById((int) $_GET['clienteId']);
-           
+
         // Inclui o arquivo que contém o formulário de cliente para exibição.
-        $this->render('formCliente',['params' => $params]);
+        $this->render('formCliente', ['params' => $params]);
     }
 
     //Método save, preenche um model com os dados do formulario e manda para o banco de dados.

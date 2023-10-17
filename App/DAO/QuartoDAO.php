@@ -35,7 +35,7 @@ class QuartoDAO extends DAO
         $stmt->bindValue(':numero', $data->numero);
         $stmt->bindValue(':valor', $data->valor);
         $stmt->bindValue(':quartoId', $data->quartoID);
-    
+
         return $stmt->execute();
     }
 

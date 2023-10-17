@@ -17,14 +17,14 @@ class LocacaoDAO extends DAO
     public function insert(LocacaoModel $model)
     {
         // Verificar se já existe uma reserva para o mesmo quarto na mesma data
-        $sql_check = "SELECT COUNT(*) FROM locacoes WHERE quarto_id = :quartoId AND data = :data_locacao";
-        $stmt_check = $this->pdo->prepare($sql_check);
-        $stmt_check->bindParam(':quartoId', $model->quartoId);
-        $stmt_check->bindParam(':data_locacao', $model->data);
-        $stmt_check->execute();
-        $num_reservas = $stmt_check->fetchColumn();
+        $sqlCheck = "SELECT COUNT(*) FROM locacoes WHERE quarto_id = :quartoId AND data = :dataLocacao";
+        $stmtCheck = $this->pdo->prepare($sqlCheck);
+        $stmtCheck->bindParam(':quartoId', $model->quartoId);
+        $stmtCheck->bindParam(':data_locacao', $model->data);
+        $stmtCheck->execute();
+        $numReservas = $stmtCheck->fetchColumn();
 
-        if ($num_reservas > 0) {
+        if ($numReservas > 0) {
             // Já existe uma reserva para o mesmo quarto na mesma data
             $mensagem = "Este quarto já está reservado para a data especificada. Por favor, escolha outra data ou quarto.";
             echo "<script>alert('$mensagem');</script>";
@@ -36,14 +36,14 @@ class LocacaoDAO extends DAO
         }
 
         // Se não houver reservas existentes, proceda com a inserção
-        $sql_insert = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES (:cliente_id, :quartoId, :data)";
-        $stmt_insert = $this->pdo->prepare($sql_insert);
+        $sqlInsert = "INSERT INTO locacoes (cliente_id, quarto_id, data) VALUES (:clienteId, :quartoId, :data)";
+        $stmtInsert = $this->pdo->prepare($sqlInsert);
 
-        $stmt_insert->bindValue(':cliente_id', $model->clienteId);
-        $stmt_insert->bindValue(':quartoId', $model->quartoId);
-        $stmt_insert->bindValue(':data', $model->data);
+        $stmtInsert->bindValue(':clienteId', $model->clienteId);
+        $stmtInsert->bindValue(':quartoId', $model->quartoId);
+        $stmtInsert->bindValue(':data', $model->data);
 
-        if ($stmt_insert->execute()) {
+        if ($stmtInsert->execute()) {
             echo "<script>alert('Nova reserva foi cadastrada com sucesso!');</script>";
             header("Location: /locacao");
             return true; // Indica que a inserção foi bem-sucedida
@@ -59,7 +59,7 @@ class LocacaoDAO extends DAO
     public function update(LocacaoModel $model)
     {
         // Atualiza as colunas da tabela cliente de acordo com o cliente_id recebido. 
-        $sql = "UPDATE locacoes SET cliente_id = :cliente_id, quarto_id = :quartoId, data = :data WHERE locacao_id = :locacao_id";
+        $sql = "UPDATE locacoes SET cliente_id = :clienteId, quarto_id = :quartoId, data = :data WHERE locacao_id = :locacao_id";
 
         // Prepara a consulta SQL atráves do objeto PDO.
         $stmt = $this->pdo->prepare($sql);
@@ -116,7 +116,7 @@ class LocacaoDAO extends DAO
 
     public function delete(int $locacaoId)
     {
-        $sql = "DELETE FROM locacoes WHERE locacao_id = :locacao_id";
+        $sql = "DELETE FROM locacoes WHERE locacao_id = :locacaoId";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':locacaoId', $locacaoId);
         $stmt->execute();

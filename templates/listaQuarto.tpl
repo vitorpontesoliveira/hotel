@@ -24,8 +24,8 @@
                     <td>{if $item->ocupado == 1}Sim{else}Não{/if}</td>
                     <td>{$item->numero}</td>
                     <td>{$item->valor}</td>
-                    <td><a href="formQuarto?quarto_id={$item->quarto_id}" class='btn btn-primary'>Editar</a></td>
-                    <td><a href="/quarto/delete?quarto_id={$item->quarto_id}" class='btn btn-danger'>Excluir</a></td>
+                    <td><a href="formQuarto?quartoId={$item->quarto_id}" class='btn btn-primary'>Editar</a></td>
+                    <td><a href="/quarto/delete?quartoId={$item->quarto_id}" class='btn btn-danger'>Excluir</a></td>
                 </tr>
             {/foreach}
         </tbody>

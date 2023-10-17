@@ -35,7 +35,6 @@ class LocacaoModel extends Model
     {
         $dao = new LocacaoDAO();
         $this->rows = $dao->select();
-
     }
 
     public function getById(int $locacaoId)

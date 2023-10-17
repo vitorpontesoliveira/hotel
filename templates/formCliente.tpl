@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <label for="telefone" class="form-label">Telefone:</label>
-                <input type="tel" value="{$params->telefone}"class="form-control" name="telefone" id="telefone"
+                <input type="tel" value="{$params->telefone}" class="form-control" name="telefone" id="telefone"
                     placeholder="(DDD)_____-____">
             </div>
             <div class="mb-3">
@@ -22,7 +22,7 @@
             </div>
             <div class="text-center">
                 <input type="submit" value="Cadastrar" class="btn btn-primary">
-                <button type="button" class="btn btn-secondary" onclick="#">Cancelar</button>
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancelar</button>
             </div>
         </form>
     </div>

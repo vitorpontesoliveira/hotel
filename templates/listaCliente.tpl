@@ -23,8 +23,8 @@
                     <td>{$item->nome}</td>
                     <td>{$item->telefone}</td>
                     <td>{$item->email}</td>
-                    <td><a href="formCliente?cliente_id={$item->cliente_id}" class='btn btn-primary'>Editar</a></td>
-                    <td><a href="/cliente/delete?cliente_id={$item->cliente_id}" class='btn btn-danger'>Excluir</a></td>
+                    <td><a href="formCliente?clienteId={$item->cliente_id}" class='btn btn-primary'>Editar</a></td>
+                    <td><a href="/cliente/delete?clienteId={$item->cliente_id}" class='btn btn-danger'>Excluir</a></td>
                 </tr>
             {/foreach}
 

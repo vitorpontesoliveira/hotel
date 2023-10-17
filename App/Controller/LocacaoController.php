@@ -23,11 +23,11 @@ class LocacaoController extends Controller
         $paramsQ = new QuartoModel();
 
         $paramsC->getAllClients();
-        $paramsQ->getAllRooms();     
+        $paramsQ->getAllRooms();
 
         if (isset($_GET['locacao_id'])) {
-            $locacao_id = (int)$_GET['locacao_id'];
-            $params = $params->getById($locacao_id);
+            $locacaoId = (int)$_GET['locacao_id'];
+            $params = $params->getById($locacaoId);
         }
 
         $this->render('formLocacao', ['params' => $params, 'paramsC' => $paramsC, 'paramsQ' => $paramsQ]);

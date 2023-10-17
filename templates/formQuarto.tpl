@@ -6,8 +6,8 @@
             <input type="hidden" name="quartoID" value="{$params->quartoID}">
             <div class="mb-3">
                 <label for="numero" class="form-label">Número do quarto:</label>
-                <input type="number" value="{$params->numero}" class="form-control" name="numero" id="numero" placeholder="0"
-                    min="1" step="1" required>
+                <input type="number" value="{$params->numero}" class="form-control" name="numero" id="numero"
+                    placeholder="0" min="1" step="1" required>
             </div>
             <div class="form-group">
                 <label for="ocupado">O quarto está disponível?</label><br>
@@ -25,7 +25,7 @@
             </div>
             <div class="text-center mt-3">
                 <input type="submit" value="Cadastrar" class="btn btn-primary">
-                <button type="button" class="btn btn-secondary" onclick="#">Cancelar</button>
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancelar</button>
             </div>
         </form>
     </div>
